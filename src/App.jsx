@@ -28,6 +28,33 @@ function App() {
             <Button component={Link} to="/login" variant="subtle" color="cyan">
               Login
             </Button>
+            <Button component={Link} to="/uplant" variant="subtle" color="cyan">
+              User Plants
+            </Button>
+            <Button
+              component={Link}
+              to="/uprofile"
+              variant="subtle"
+              color="cyan"
+            >
+              User Profile
+            </Button>
+            <Button
+              component={Link}
+              to="/plantcare"
+              variant="subtle"
+              color="cyan"
+            >
+              Plant Care
+            </Button>
+            <Button
+              component={Link}
+              to="/createplant"
+              variant="subtle"
+              color="cyan"
+            >
+              Create Plant
+            </Button>
           </Box>
         </Header>
       }
