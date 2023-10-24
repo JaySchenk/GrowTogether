@@ -32,6 +32,7 @@ const PlantCarePage = ({ match }) => {
           <h1>{plant.species}</h1>
           {plant.image && <img src={plant.image} alt={plant.species} />}
           <h2>Care Instructions:</h2>
+          <p>About: {plant.about}</p>
           <p>Water: {plant.care_instructions.water.frequency}</p>
           <p>Light Requirement: {plant.care_instructions.light_requirement}</p>
           <p>Temperature: {plant.care_instructions.temperature}</p>
