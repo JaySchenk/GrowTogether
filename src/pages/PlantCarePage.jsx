@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import NavbarMobile from "../components/NavbarMobile";
+import PlantCard from "../components/PlantCard";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -29,6 +30,7 @@ const PlantCarePage = ({ match }) => {
       {plant ? (
         <div>
           <BackButton /> 
+          <PlantCard plant={plant} />
           <h1>{plant.species}</h1>
           {plant.image && <img src={plant.image} alt={plant.species} />}
           <h2>Care Instructions:</h2>
@@ -40,8 +42,8 @@ const PlantCarePage = ({ match }) => {
           <p>Pot Size: {plant.care_instructions.pot_size}</p>
           <p>Growth Stages: {plant.care_instructions.growth_stages.join(', ')}</p>
           <p>Common Pests and Diseases: {plant.care_instructions.common_pests_diseases}</p>
-          <p>Toxicity: {plant.care_instructions.toxicity.join(', ')}</p>
-          <p>Difficulty Care Level: {plant.care_instructions.difficulty_care_level.join(', ')}</p>
+          <p>Toxicity: {plant.care_instructions.toxicity}</p>
+          <p>Difficulty Care Level: {plant.care_instructions.difficulty_care_level}</p>
           <NavbarMobile/>
         </div>
       ) : (
