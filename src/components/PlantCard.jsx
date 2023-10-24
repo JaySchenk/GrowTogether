@@ -1,13 +1,18 @@
-import { Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 const PlantCard = ({plant}) => {
   return (
     <div className="plant-card">
-      <img src={plant.image} alt={plant.species} />
-      <p className="bg-slate-300 font-bold">{plant.species}</p>
-      <p>Difficulty Level: {plant.care_instructions.difficulty_care_level}</p>
-      <Link to={`/plantcare/${plant._id}`}> <Button> info </Button></Link>
+        <div className="plant-info">
+            <img src={plant.image} alt={plant.species} />
+            <div className="text-left">
+                <p className="font-semibold text-lg  text-sky-900">{plant.species}</p>
+                <p className="font-medium text-base text-gray-600">Difficulty Level:</p> <p className="font-normal text-sm"> {plant.care_instructions.difficulty_care_level}</p>
+            </div>
+        </div>
+        <div className="plant-link chevron-double-right">
+        <Link to={`/plantcare/${plant._id}`}> info </Link>
+        </div>
     </div>
   );
 };
