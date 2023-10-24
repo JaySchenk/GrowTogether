@@ -1,4 +1,5 @@
 import { Box, Text } from "@mantine/core";
+import NavbarMobile from "../components/NavbarMobile";
 
 const PlantLibrary = () => {
   return (
@@ -13,6 +14,7 @@ const PlantLibrary = () => {
       <Text size="xl" weight="bold" align="center">
         library
       </Text>
+      <NavbarMobile/>
     </Box>
   );
 };

@@ -1,4 +1,5 @@
 import { Box, Text } from "@mantine/core";
+import NavbarMobile from "../components/NavbarMobile";
 
 const UserProfilePage = () => {
   return (
@@ -13,6 +14,7 @@ const UserProfilePage = () => {
       <Text size="xl" weight="bold" align="center">
         Here you will see all information that's linked to your UserId
       </Text>
+      <NavbarMobile/>
     </Box>
   );
 };
