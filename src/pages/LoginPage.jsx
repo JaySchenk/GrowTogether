@@ -1,12 +1,46 @@
-import { Box, Button, PasswordInput, Text, TextInput } from '@mantine/core'
+import { Box, Button, PasswordInput, Text, TextInput } from '@mantine/core';
+import { useContext, useState } from 'react';
+import { SessionContext } from '../contexts/SessionContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  // Add some states to control your inputs
+  const navigate = useNavigate();
 
-  const handleSubmit = event => {
-    event.preventDefault()
-    // Send your login information to your backend
-  }
+  const { handleLogin } = useContext(SessionContext);
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const payload = { username, password };
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/auth/login`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (response.status === 400) {
+        const parsed = await response.json();
+        throw new Error(parsed.message);
+      }
+      if (response.status === 200) {
+        const parsed = await response.json();
+        handleLogin(parsed.token);
+        navigate('/profile');
+      }
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.message);
+    }
+  };
 
   return (
     <Box
@@ -24,11 +58,31 @@ const LoginPage = () => {
       </Text>
       <Box
         component='form'
-        sx={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '2rem' }}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '20px',
+          marginTop: '2rem',
+        }}
         onSubmit={handleSubmit}
       >
-        <TextInput label='Username' variant='filled' withAsterisk />
-        <PasswordInput label='Password' variant='filled' withAsterisk />
+        <TextInput
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+          required
+          label='Username'
+          variant='filled'
+          withAsterisk
+        />
+        <PasswordInput
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          required
+          type='password'
+          label='Password'
+          variant='filled'
+          withAsterisk
+        />
         <Button
           type='submit'
           variant='filled'
@@ -37,9 +91,10 @@ const LoginPage = () => {
         >
           Connect
         </Button>
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
