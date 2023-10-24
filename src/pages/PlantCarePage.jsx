@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import BackButton from "../components/BackButton";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -26,6 +27,7 @@ const PlantCarePage = ({ match }) => {
     <div>
       {plant ? (
         <div>
+          <BackButton /> 
           <h1>{plant.species}</h1>
           {plant.image && <img src={plant.image} alt={plant.species} />}
           <h2>Care Instructions:</h2>
