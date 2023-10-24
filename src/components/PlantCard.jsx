@@ -5,7 +5,7 @@ const PlantCard = ({plant}) => {
   return (
     <div className="plant-card">
       <img src={plant.image} alt={plant.species} />
-      <p>{plant.species}</p>
+      <p className="bg-slate-300 font-bold">{plant.species}</p>
       <p>Difficulty Level: {plant.care_instructions.difficulty_care_level}</p>
       <Link to={`/plantcare/${plant._id}`}> <Button> info </Button></Link>
     </div>
