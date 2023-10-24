@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import NavbarMobile from "../components/NavbarMobile";
-import PlantCard from "../components/PlantCard";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -30,7 +29,6 @@ const PlantCarePage = ({ match }) => {
       {plant ? (
         <div>
           <BackButton /> 
-          <PlantCard plant={plant} />
           <h1>{plant.species}</h1>
           {plant.image && <img src={plant.image} alt={plant.species} />}
           <h2>Care Instructions:</h2>

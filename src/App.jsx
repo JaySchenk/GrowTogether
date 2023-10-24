@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import UserPlantPage from "./pages/UserPlantPage";
-import UserProfilePage from "./pages/UserProfilePage copy";
+import UserProfilePage from "./pages/UserProfilePage";
 import PlantCarePage from "./pages/PlantCarePage";
 import CreatePlant from "./pages/CreatePlant";
 import PlantLibrary from "./pages/PlantLibrary";
