@@ -7,6 +7,7 @@ import UserPlantPage from "./pages/UserPlantPage";
 import UserProfilePage from "./pages/UserProfilePage copy";
 import PlantCarePage from "./pages/PlantCarePage";
 import CreatePlant from "./pages/CreatePlant";
+import PlantLibrary from "./pages/PlantLibrary";
 
 function App() {
   return (
@@ -45,7 +46,7 @@ function App() {
               variant="subtle"
               color="cyan"
             >
-              Plant Care
+              Plant Care Library
             </Button>
             <Button
               component={Link}
@@ -66,7 +67,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/uplant" element={<UserPlantPage />} />
         <Route path="/uprofile" element={<UserProfilePage />} />
-        <Route path="/plantcare" element={<PlantCarePage />} />
+        <Route path="/plantcare" element={<PlantLibrary />} />
+        <Route path="/plantcare/:plantCareId" element={<PlantCarePage />} />
         <Route path="/createplant" element={<CreatePlant />} />
       </Routes>
     </AppShell>
