@@ -1,13 +1,33 @@
-import { Box, Button, PasswordInput, Text, TextInput } from '@mantine/core'
+import { Box, Button, PasswordInput, Text, TextInput } from '@mantine/core';
+import { useState } from 'react';
 
 const SignupPage = () => {
-  // Add some states to control your inputs
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSubmit = event => {
-    event.preventDefault()
-    // Send your signup information to your backend
-  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const payload = { username, password };
 
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/auth/signup`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (response.status === 201) {
+        const parsed = await response.json();
+        console.log(parsed);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Box
       sx={{
@@ -24,11 +44,30 @@ const SignupPage = () => {
       </Text>
       <Box
         component='form'
-        sx={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '2rem' }}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '20px',
+          marginTop: '2rem',
+        }}
         onSubmit={handleSubmit}
       >
-        <TextInput label='Username' variant='filled' withAsterisk />
-        <PasswordInput label='Password' variant='filled' withAsterisk />
+        <TextInput
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+          required
+          label='Username'
+          variant='filled'
+          withAsterisk
+        />
+        <PasswordInput
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          required
+          label='Password'
+          variant='filled'
+          withAsterisk
+        />
         <Button
           type='submit'
           variant='filled'
@@ -39,7 +78,7 @@ const SignupPage = () => {
         </Button>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default SignupPage
+export default SignupPage;
