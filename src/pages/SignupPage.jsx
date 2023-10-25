@@ -1,4 +1,3 @@
-import { Box, Button, PasswordInput, Text, TextInput } from "@mantine/core";
 import { useContext, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { useNavigate } from "react-router-dom";
@@ -44,87 +43,80 @@ const SignupPage = () => {
       console.log(error);
     }
   };
+
   return (
-    <Box
-      sx={{
-        margin: "0 auto",
-        maxWidth: "400px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        height: "calc(100vh - 100px)",
-      }}
-    >
-      <Text align="center" size="xl" weight="bold">
-        Signup
-      </Text>
-      <Box
-        component="form"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-          marginTop: "2rem",
-        }}
+    <div className="m-auto max-w-md flex flex-col justify-center h-[calc(100vh-100px)]">
+      <h1 className="text-xl font-bold text-center">Signup</h1>
+      <form
+        className="flex flex-col gap-4 mt-8"
         onSubmit={handleSubmit}
       >
-        <TextInput
+        <input
+          type="text"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           required
-          label="Email"
-          variant="filled"
-          withAsterisk
+          placeholder="Email"
+          className="p-2 border rounded-lg"
         />
-        <PasswordInput
+        <input
+          type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           required
-          label="Password"
-          variant="filled"
-          withAsterisk
+          placeholder="Password"
+          className="p-2 border rounded-lg"
+          
         />
-        <TextInput
+        <input
+          type="text"
           value={streetHouseNumb}
           onChange={(event) => setStreetHouseNumbl(event.target.value)}
-          label="Street name and housenumber"
-          variant="filled"
+          placeholder="Street name and housenumber"
+          className="p-2 border rounded-lg"
         />
-        <TextInput
+        <input
+          type="text"
           value={postalCode}
           onChange={(event) => setPostalCode(event.target.value)}
-          label="Postal or Zip code"
-          variant="filled"
+          placeholder="Postal or Zip code"
+          className="p-2 border rounded-lg"
         />
-        <TextInput
+        <input
+          type="text"
           value={city}
           onChange={(event) => setCity(event.target.value)}
-          label="City"
-          variant="filled"
+          placeholder="City"
+          className="p-2 border rounded-lg"
         />
-        <TextInput
-          value={country}
-          onChange={(event) => setCountry(event.target.value)}
-          label="Country"
-          variant="filled"
-        />
-        <TextInput
+          <select
+            autoComplete="country-name"
+            value={country}
+            onChange={(event) => setCountry(event.target.value)}
+            placeholder="Country"
+            className="p-2 border rounded-lg w-full"
+          >
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="Mexico">Mexico</option>
+          </select>
+        <input
+          type="text"
           value={telephone}
           onChange={(event) => setTelephone(event.target.value)}
-          label="Telephone"
-          variant="filled"
+          placeholder="Telephone"
+          className="p-2 border rounded-lg"
         />
-        <Button
+        <button
           type="submit"
-          variant="filled"
-          color="cyan"
-          sx={{ marginTop: "1rem", alignSelf: "center" }}
+          className="bg-emerald-600 text-white p-2 rounded-lg self-center mt-4"
         >
           Register
-        </Button>
-      </Box>
-    </Box>
+        </button>
+      </form>
+    </div>
   );
 };
 
 export default SignupPage;
+

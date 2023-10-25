@@ -1,27 +1,20 @@
-import {
-  Box,
-  Button,
-  Select,
-  Text,
-  TextInput,
-  Checkbox,
-  DateInput,
-} from "@mantine/core";
-import { useContext, useState, useEffect } from "react";
-import { SessionContext } from "../contexts/SessionContext";
+import React, { useContext, useState, useEffect } from 'react';
+import { SessionContext } from '../contexts/SessionContext';
 
 const NewUserPlant = () => {
-  const [plants, setPlants] = useState();
-  const [plantName, setPlantName] = useState();
-  const [plantSpecies, setPlantSpecies] = useState();
-  const [plantPicture, setPlantPicture] = useState();
+  const [plants, setPlants] = useState([]);
+  const [plantName, setPlantName] = useState('');
+  const [plantSpecies, setPlantSpecies] = useState('');
+  const [plantPicture, setPlantPicture] = useState('');
   const [plantCutting, setPlantCutting] = useState(0);
-  const [plantSize, setPlantSize] = useState();
-  const [product, setProduct] = useState();
-  const [productUsedDate, setProductUsedDate] = useState();
-  const [activity, setActivity] = useState();
-  const [activityDate, setActivityDate] = useState();
+  const [plantSize, setPlantSize] = useState('');
+  const [product, setProduct] = useState('');
+  const [productUsedDate, setProductUsedDate] = useState('');
+  const [activity, setActivity] = useState('');
+  const [activityDate, setActivityDate] = useState('');
   const [reminderSettings, setReminderSettings] = useState(true);
+
+  const { handleLogin } = useContext(SessionContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,6 +38,7 @@ const NewUserPlant = () => {
       ],
       reminderSettings: reminderSettings,
     };
+
     Object.keys(payload).forEach((key) => {
       if (payload[key] === undefined || payload[key] === null) {
         delete payload[key];
@@ -52,16 +46,14 @@ const NewUserPlant = () => {
     });
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/userplants`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/userplants`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
       if (response.status === 201) {
         const parsed = await response.json();
         console.log(parsed);
@@ -70,11 +62,12 @@ const NewUserPlant = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/plantcare`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         return response.json();
       })
@@ -82,136 +75,116 @@ const NewUserPlant = () => {
         setPlants(data);
         console.log(data);
       })
-
       .catch((error) => console.log(error));
   }, []);
 
   return (
-    <Box
-      sx={{
-        margin: "0 auto",
-        maxWidth: "400px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        height: "calc(100vh - 100px)",
-      }}
-    >
-      {" "}
-      {plants ? (
+    <div className="m-auto max-w-md flex flex-col justify-center h-[calc(100vh-100px)]">
+      {plants.length > 0 ? (
         <>
-          <Text align="center" size="xl" weight="bold">
-            New plant
-          </Text>
-          <Box
-            component="form"
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              marginTop: "2rem",
-            }}
-            onSubmit={handleSubmit}
-          >
-            <TextInput
+          <h1 className="text-xl font-bold text-center">New plant</h1>
+          <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
+            <input
+              type="text"
               value={plantName}
               onChange={(event) => setPlantName(event.target.value)}
               required
-              label="Plant name"
-              variant="filled"
-              withAsterisk
+              placeholder="Plant name"
+              className="p-2 border rounded-lg"
             />
-            <Select
-              label="Plant species"
-              placeholder="Pick value"
-              data={plants.map((item) => ({
-                label: item.species,
-                value: item._id,
-              }))}
+            <select
+              value={plantSpecies}
               onChange={(event) => setPlantSpecies(event.target.value)}
-            />
-            <TextInput
+              className="p-2 border rounded-lg"
+            >
+              <option value="">Pick value</option>
+              {plants.map((item) => (
+                <option key={item._id} value={item.species}>
+                  {item.species}
+                </option>
+              ))}
+            </select>
+            <input
+              type="text"
               value={plantPicture}
               onChange={(event) => setPlantPicture(event.target.value)}
               required
-              label="Picture of plant"
-              variant="filled"
-              withAsterisk
+              placeholder="Picture of plant"
+              className="p-2 border rounded-lg"
             />
-            <TextInput
+            Plant cuttings available
+            <input
+              type="number"
               value={plantCutting}
               onChange={(event) => setPlantCutting(event.target.value)}
               required
-              label="Plant cuttings available"
-              variant="filled"
-              withAsterisk
+              placeholder="Plant cuttings available"
+              className="p-2 border rounded-lg"
             />
-            <TextInput
+            <input
+              type="text"
               value={plantSize}
               onChange={(event) => setPlantSize(event.target.value)}
               required
-              label="Plant size"
-              variant="filled"
-              withAsterisk
+              placeholder="Plant size"
+              className="p-2 border rounded-lg"
             />
-            <TextInput
+            <input
+              type="text"
               value={product}
               onChange={(event) => setProduct(event.target.value)}
-              label="Product's used on plant"
-              variant="filled"
+              placeholder="Product's used on plant"
+              className="p-2 border rounded-lg"
             />
-            <TextInput
+            Date of using products
+            <input
+              type="date"
               value={productUsedDate}
               onChange={(event) => setProductUsedDate(event.target.value)}
               required
-              label="Date of using products"
-              variant="filled"
-              withAsterisk
+              placeholder="Date of using products"
+              className="p-2 border rounded-lg"
             />
-            <TextInput
+            <input
+              type="text"
               value={activity}
               onChange={(event) => setActivity(event.target.value)}
               required
-              label="Plant care acitivty"
-              variant="filled"
-              withAsterisk
+              placeholder="Plant care activity"
+              className="p-2 border rounded-lg"
             />
-            <DateInput
-              valueFormat="YYYY MMM DD"
-              label="Plant care activity date"
-              placeholder="Date input"
-              onChange={(event) => setActivityDate(event.target.value)}
-            />
-            ;
-            <TextInput
+            Plant care activity date
+            <input
+              type="date"
               value={activityDate}
               onChange={(event) => setActivityDate(event.target.value)}
               required
-              label="Plant care activity date"
-              variant="filled"
-              withAsterisk
+              placeholder="Plant care activity date"
+              className="p-2 border rounded-lg"
             />
-            <Checkbox
-              defaultChecked
-              labelPosition="left"
-              onChange={(event) => setReminderSettings(event.target.checked)}
-              label="I want to receive plantcare reminders"
-            />
-            <Button
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                defaultChecked
+                onChange={(event) => setReminderSettings(event.target.checked)}
+                className="mr-2"
+              />
+              I want to receive plant care reminders
+            </label>
+            <button
               type="submit"
-              variant="filled"
-              color="cyan"
-              sx={{ marginTop: "1rem", alignSelf: "center" }}
+              className="p-2 bg-cyan text-white rounded-lg self-center mt-4"
             >
               Make Plant
-            </Button>
-          </Box>
+            </button>
+          </form>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </Box>
+    </div>
   );
 };
 
 export default NewUserPlant;
+

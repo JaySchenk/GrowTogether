@@ -33,6 +33,7 @@ const PlantCarePage = ({ match }) => {
             {/* <BackButton />  */}
             <div>
               <p className="font-medium text-4xl  text-sky-950">{plant.species}</p>
+              <div></div>
               <img src={Light} alt="" />
               <p>LIGHT</p>
               <p>35-40%</p>

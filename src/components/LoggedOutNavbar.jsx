@@ -1,17 +1,18 @@
-import { AppShell, Box, Button, Header } from '@mantine/core';
-import { Link, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LoggedInNavbar = () => {
   return (
-    <>
-      <Button component={Link} to='/signup' variant='subtle' color='cyan'>
+    <div className="flex">
+      <Link to="/signup" className="ml-6 hover:underline">
         Signup
-      </Button>
-      <Button component={Link} to='/login' variant='subtle' color='cyan'>
+      </Link>
+      <Link to="/login" className="ml-6 hover:underline">
         Login
-      </Button>
-    </>
+      </Link>
+    </div>
   );
 };
 
-export default LoggedInNavbar;
+export default LoggedInNavbar
+

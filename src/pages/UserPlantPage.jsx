@@ -1,25 +1,17 @@
-import { Box, Text } from "@mantine/core";
 import NavbarMobile from "../components/NavbarMobile";
 import NewUserPlant from "../components/NewUserPlant";
 
 const UserPlantPage = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "calc(100vh - 100px)",
-      }}
-    >
-      <Text size="xl" weight="bold" align="center">
-        Here you will see cards of all the plant's you've got and option to add
-        new plant.
-      </Text>
+    <div className="flex items-center justify-center h-[calc(100vh-100px)]">
+      <p className="text-xl font-bold text-center">
+        Here you will see cards of all the plants you've got and the option to add a new plant.
+      </p>
       <NewUserPlant />
       <NavbarMobile />
-    </Box>
+    </div>
   );
 };
 
 export default UserPlantPage;
+

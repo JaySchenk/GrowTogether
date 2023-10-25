@@ -1,5 +1,4 @@
-import { Button } from '@mantine/core';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SessionContext } from '../contexts/SessionContext';
 
@@ -14,21 +13,25 @@ const LoggedInNavbar = () => {
   }
 
   return (
-    <>
-      <Button onClick={handleClick} variant='subtle' color='cyan'>
+    <div className="flex">
+      <button
+        onClick={handleClick}
+        className=" hover:underline"
+      >
         Log Out
-      </Button>
-      <Button component={Link} to='/uplant' variant='subtle' color='cyan'>
+      </button>
+      <Link to="/uplant" className="ml-6 hover:underline">
         User Plants
-      </Button>
-      <Button component={Link} to='/uprofile' variant='subtle' color='cyan'>
+      </Link>
+      <Link to="/uprofile" className="ml-6 hover:underline">
         User Profile
-      </Button>
-      <Button component={Link} to='/createplant' variant='subtle' color='cyan'>
+      </Link>
+      <Link to="/createplant" className="ml-6 hover:underline">
         Create Plant
-      </Button>
-    </>
+      </Link>
+    </div>
   );
 };
 
 export default LoggedInNavbar;
+

@@ -1,4 +1,3 @@
-import { AppShell, Box, Button, Header } from '@mantine/core';
 import { Link, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -19,43 +18,26 @@ function App() {
   useEffect(() => {}, [isAuthenticated]);
 
   return (
-    // <AppShell
-    //   padding='md'
-    //   header={
-    //     <Header
-    //       height={60}
-    //       p='xs'
-    //       sx={{ display: 'flex', justifyContent: 'space-between' }}
-    //     >
-    //       <Button component={Link} to='/' variant='subtle' color='cyan'>
-    //         Home
-    //       </Button>
-    //       <Box>
-    //         {isAuthenticated && !isLoading ? (
-    //           <LoggedInNavbar />
-    //         ) : (
-    //           <LoggedOutNavbar />
-    //         )}
-    //         <Button
-    //           component={Link}
-    //           to='/plantcare'
-    //           variant='subtle'
-    //           color='cyan'
-    //         >
-    //           Plant Care Library
-    //         </Button>
-    //       </Box>
-    //     </Header>
-    //   }
-    // >
+    <div>
+      <header className=" sticky top-0 p-8 flex justify-between items-center h-16">
+        <Link to="/" className="hover:underline">
+          Home
+        </Link>
+        <div className='w-2/3 flex justify-end'>
+          {isAuthenticated && !isLoading ? <LoggedInNavbar /> : <LoggedOutNavbar />}
+          <Link to="/plantcare" className=" hover:underline ml-6">
+            Plant Care Library
+          </Link>
+        </div>
+      </header>
+
       <Routes>
-        {/* Add some new route(s) on what you want to work, don't forget to make a PrivateRoute component */}
-        <Route path='/' element={<HomePage />} />
-        <Route path='/signup' element={<SignupPage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/plantcare' element={<PlantLibrary />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/plantcare" element={<PlantLibrary />} />
         <Route
-          path='/uplant'
+          path="/uplant"
           element={
             <PrivateRoute>
               <UserPlantPage />
@@ -63,16 +45,16 @@ function App() {
           }
         />
         <Route
-          path='/uprofile'
+          path="/uprofile"
           element={
             <PrivateRoute>
               <UserProfilePage />
             </PrivateRoute>
           }
         />
-        <Route path='/plantcare/:plantCareId' element={<PlantCarePage />} />
+        <Route path="/plantcare/:plantCareId" element={<PlantCarePage />} />
         <Route
-          path='/createplant'
+          path="/createplant"
           element={
             <PrivateRoute>
               <CreatePlant />
@@ -80,7 +62,7 @@ function App() {
           }
         />
       </Routes>
-    // </AppShell>
+    </div>
   );
 }
 

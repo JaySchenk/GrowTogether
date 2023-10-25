@@ -1,21 +1,13 @@
-import { Box, Text } from "@mantine/core";
 import NavbarMobile from "../components/NavbarMobile";
 
 const UserProfilePage = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "calc(100vh - 100px)",
-      }}
-    >
-      <Text size="xl" weight="bold" align="center">
+    <div className="flex items-center justify-center h-[calc(100vh-100px)]">
+      <p className="text-xl font-bold text-center">
         Here you will see all information that's linked to your UserId
-      </Text>
-      <NavbarMobile/>
-    </Box>
+      </p>
+      <NavbarMobile />
+    </div>
   );
 };
 

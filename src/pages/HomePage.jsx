@@ -1,17 +1,9 @@
-import { Box, Text } from "@mantine/core";
+import React from 'react';
 
 const HomePage = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "calc(100vh - 100px)",
-        maxWidth: "calc(100vw - 100px)",
-      }}
-    >
-      <Text size="xl" weight="bold" align="center">
+    <div className=" homepage flex items-center justify-center w-full h-screen ">
+      <div className="text-xl font-bold text-center w-2/3 justify-middle">
         Welcome to GrowTogether, your digital gardening companion that ensures
         your plants thrive and bloom to their fullest potential. Whether you're
         a seasoned botanist or just stepping into the world of greenery, our app
@@ -23,9 +15,10 @@ const HomePage = () => {
         as you and your plants grow together, fostering an environment of beauty
         and tranquility right at your fingertips. Join us, and let's cultivate a
         greener tomorrow, today.
-      </Text>
-    </Box>
+      </div>
+    </div>
   );
 };
 
 export default HomePage;
+

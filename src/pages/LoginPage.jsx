@@ -1,15 +1,12 @@
-import { Box, Button, PasswordInput, Text, TextInput } from '@mantine/core';
 import { useContext, useState } from 'react';
 import { SessionContext } from '../contexts/SessionContext';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const { isAuthenticated } = useContext(SessionContext);
+  const { isAuthenticated, handleLogin } = useContext(SessionContext);
   const navigate = useNavigate();
 
   isAuthenticated && navigate('/uprofile');
-
-  const { handleLogin } = useContext(SessionContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,58 +43,36 @@ const LoginPage = () => {
   };
 
   return (
-    <Box
-      sx={{
-        margin: '0 auto',
-        maxWidth: '400px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        height: 'calc(100vh - 100px)',
-      }}
-    >
-      <Text align='center' size='xl' weight='bold'>
-        Login
-      </Text>
-      <Box
-        component='form'
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '20px',
-          marginTop: '2rem',
-        }}
-        onSubmit={handleSubmit}
-      >
-        <TextInput
+    <div className="m-auto max-w-md flex flex-col justify-center h-[calc(100vh-100px)]">
+      <h1 className="text-xl font-bold text-center">Login</h1>
+      <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
+        <input
+          type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           required
-          label='Email'
-          variant='filled'
-          withAsterisk
+          placeholder="Email"
+          className="p-2 border rounded-lg"
         />
-        <PasswordInput
+        <input
+          type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           required
-          type='password'
-          label='Password'
-          variant='filled'
-          withAsterisk
+          placeholder="Password"
+          className="p-2 border rounded-lg"
         />
-        <Button
-          type='submit'
-          variant='filled'
-          color='cyan'
-          sx={{ marginTop: '1rem', alignSelf: 'center' }}
+        <button
+          type="submit"
+          className="bg-emerald-600 text-white p-2 rounded-lg self-center mt-4"
         >
           Connect
-        </Button>
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      </Box>
-    </Box>
+        </button>
+        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      </form>
+    </div>
   );
 };
 
 export default LoginPage;
+
