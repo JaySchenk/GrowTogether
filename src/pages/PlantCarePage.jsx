@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import NavbarMobile from "../components/NavbarMobile";
+import Light from "../../public/light.png"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -32,6 +33,9 @@ const PlantCarePage = ({ match }) => {
             {/* <BackButton />  */}
             <div>
               <p className="font-medium text-4xl  text-sky-950">{plant.species}</p>
+              <img src={Light} alt="" />
+              <p>LIGHT</p>
+              <p>35-40%</p>
               <p>Temperature: {plant.care_instructions.temperature}</p>
               <p>Light Requirement: {plant.care_instructions.light_requirement}</p>
               <p>Water: {plant.care_instructions.water.frequency}</p>

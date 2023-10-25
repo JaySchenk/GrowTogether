@@ -19,35 +19,35 @@ function App() {
   useEffect(() => {}, [isAuthenticated]);
 
   return (
-    <AppShell
-      padding='md'
-      header={
-        <Header
-          height={60}
-          p='xs'
-          sx={{ display: 'flex', justifyContent: 'space-between' }}
-        >
-          <Button component={Link} to='/' variant='subtle' color='cyan'>
-            Home
-          </Button>
-          <Box>
-            {isAuthenticated && !isLoading ? (
-              <LoggedInNavbar />
-            ) : (
-              <LoggedOutNavbar />
-            )}
-            <Button
-              component={Link}
-              to='/plantcare'
-              variant='subtle'
-              color='cyan'
-            >
-              Plant Care Library
-            </Button>
-          </Box>
-        </Header>
-      }
-    >
+    // <AppShell
+    //   padding='md'
+    //   header={
+    //     <Header
+    //       height={60}
+    //       p='xs'
+    //       sx={{ display: 'flex', justifyContent: 'space-between' }}
+    //     >
+    //       <Button component={Link} to='/' variant='subtle' color='cyan'>
+    //         Home
+    //       </Button>
+    //       <Box>
+    //         {isAuthenticated && !isLoading ? (
+    //           <LoggedInNavbar />
+    //         ) : (
+    //           <LoggedOutNavbar />
+    //         )}
+    //         <Button
+    //           component={Link}
+    //           to='/plantcare'
+    //           variant='subtle'
+    //           color='cyan'
+    //         >
+    //           Plant Care Library
+    //         </Button>
+    //       </Box>
+    //     </Header>
+    //   }
+    // >
       <Routes>
         {/* Add some new route(s) on what you want to work, don't forget to make a PrivateRoute component */}
         <Route path='/' element={<HomePage />} />
