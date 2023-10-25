@@ -1,13 +1,19 @@
 import { Box, Button, PasswordInput, Text, TextInput } from '@mantine/core';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { SessionContext } from '../contexts/SessionContext';
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { isAuthenticated } = useContext(SessionContext);
+  const navigate = useNavigate();
+
+  isAuthenticated && navigate('/uprofile');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const payload = { username, password };
+    const payload = { email, password };
 
     try {
       const response = await fetch(
@@ -53,10 +59,10 @@ const SignupPage = () => {
         onSubmit={handleSubmit}
       >
         <TextInput
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           required
-          label='Username'
+          label='Email'
           variant='filled'
           withAsterisk
         />

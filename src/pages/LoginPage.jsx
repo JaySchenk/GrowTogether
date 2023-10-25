@@ -4,17 +4,20 @@ import { SessionContext } from '../contexts/SessionContext';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const { isAuthenticated } = useContext(SessionContext);
   const navigate = useNavigate();
+
+  isAuthenticated && navigate('/uprofile');
 
   const { handleLogin } = useContext(SessionContext);
 
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const payload = { username, password };
+    const payload = { email, password };
 
     try {
       const response = await fetch(
@@ -34,7 +37,7 @@ const LoginPage = () => {
       if (response.status === 200) {
         const parsed = await response.json();
         handleLogin(parsed.token);
-        navigate('/profile');
+        navigate('/uprofile');
       }
     } catch (error) {
       console.log(error);
@@ -67,10 +70,10 @@ const LoginPage = () => {
         onSubmit={handleSubmit}
       >
         <TextInput
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           required
-          label='Username'
+          label='Email'
           variant='filled'
           withAsterisk
         />
