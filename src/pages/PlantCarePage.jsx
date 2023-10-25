@@ -28,15 +28,19 @@ const PlantCarePage = ({ match }) => {
     <div>
       {plant ? (
         <div>
-          <BackButton /> 
-          <h1>{plant.species}</h1>
-          {plant.image && <img src={plant.image} alt={plant.species} />}
+          <div className="plant-overview">
+            {/* <BackButton />  */}
+            <div>
+              <p className="font-medium text-4xl  text-sky-950">{plant.species}</p>
+              <p>Temperature: {plant.care_instructions.temperature}</p>
+              <p>Light Requirement: {plant.care_instructions.light_requirement}</p>
+              <p>Water: {plant.care_instructions.water.frequency}</p>
+              <p>Soil Type: {plant.care_instructions.soil_type}</p>
+            </div>
+            <img src={plant.image} alt={plant.species}/>
+          </div>
           <h2>Care Instructions:</h2>
           <p>About: {plant.about}</p>
-          <p>Water: {plant.care_instructions.water.frequency}</p>
-          <p>Light Requirement: {plant.care_instructions.light_requirement}</p>
-          <p>Temperature: {plant.care_instructions.temperature}</p>
-          <p>Soil Type: {plant.care_instructions.soil_type}</p>
           <p>Pot Size: {plant.care_instructions.pot_size}</p>
           <p>Growth Stages: {plant.care_instructions.growth_stages.join(', ')}</p>
           <p>Common Pests and Diseases: {plant.care_instructions.common_pests_diseases}</p>

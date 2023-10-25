@@ -84,3 +84,10 @@ button:focus-visible {
   align-items: center;
 }
 
+.plant-overview{
+  background-color: #DCE8D6;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 100px;
+  padding: 100px 29px 0;
+}
