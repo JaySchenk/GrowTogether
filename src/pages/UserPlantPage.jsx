@@ -1,5 +1,6 @@
 import { Box, Text } from "@mantine/core";
 import NavbarMobile from "../components/NavbarMobile";
+import NewUserPlant from "../components/NewUserPlant";
 
 const UserPlantPage = () => {
   return (
@@ -15,7 +16,8 @@ const UserPlantPage = () => {
         Here you will see cards of all the plant's you've got and option to add
         new plant.
       </Text>
-      <NavbarMobile/>
+      <NewUserPlant />
+      <NavbarMobile />
     </Box>
   );
 };
