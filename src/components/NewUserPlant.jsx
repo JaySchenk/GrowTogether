@@ -1,17 +1,17 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { SessionContext } from '../contexts/SessionContext';
+import React, { useContext, useState, useEffect } from "react";
+import { SessionContext } from "../contexts/SessionContext";
 
 const NewUserPlant = () => {
   const [plants, setPlants] = useState([]);
-  const [plantName, setPlantName] = useState('');
-  const [plantSpecies, setPlantSpecies] = useState('');
-  const [plantPicture, setPlantPicture] = useState('');
+  const [plantName, setPlantName] = useState("");
+  const [plantSpecies, setPlantSpecies] = useState("");
+  const [plantPicture, setPlantPicture] = useState("");
   const [plantCutting, setPlantCutting] = useState(0);
-  const [plantSize, setPlantSize] = useState('');
-  const [product, setProduct] = useState('');
-  const [productUsedDate, setProductUsedDate] = useState('');
-  const [activity, setActivity] = useState('');
-  const [activityDate, setActivityDate] = useState('');
+  const [plantSize, setPlantSize] = useState("");
+  const [product, setProduct] = useState("");
+  const [productUsedDate, setProductUsedDate] = useState("");
+  const [activity, setActivity] = useState("");
+  const [activityDate, setActivityDate] = useState("");
   const [reminderSettings, setReminderSettings] = useState(true);
 
   const { handleLogin } = useContext(SessionContext);
@@ -46,13 +46,16 @@ const NewUserPlant = () => {
     });
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/userplants`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/userplants`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (response.status === 201) {
         const parsed = await response.json();
@@ -67,7 +70,7 @@ const NewUserPlant = () => {
     fetch(`${import.meta.env.VITE_API_URL}/api/plantcare`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
@@ -79,7 +82,7 @@ const NewUserPlant = () => {
   }, []);
 
   return (
-    <div className="m-auto max-w-md flex flex-col justify-center h-[calc(100vh-100px)]">
+    <div className="m-auto max-w-md flex flex-col justify-center">
       {plants.length > 0 ? (
         <>
           <h1 className="text-xl font-bold text-center">New plant</h1>
@@ -104,14 +107,42 @@ const NewUserPlant = () => {
                 </option>
               ))}
             </select>
-            <input
-              type="text"
-              value={plantPicture}
-              onChange={(event) => setPlantPicture(event.target.value)}
-              required
-              placeholder="Picture of plant"
-              className="p-2 border rounded-lg"
-            />
+            <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+              <div className="text-center">
+                <svg
+                  className="mx-auto h-12 w-12 text-gray-300"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                  <label
+                    htmlFor="file-upload"
+                    className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                  >
+                    <span>Upload a file</span>
+                    <input
+                      id="file-upload"
+                      name="file-upload"
+                      type="file"
+                      className="sr-only"
+                      value={plantPicture}
+                      onChange={(event) => setPlantPicture(event.target.value)}
+                    />
+                  </label>
+                  <p className="pl-1">or drag and drop</p>
+                </div>
+                <p className="text-xs leading-5 text-gray-600">
+                  PNG, JPG, GIF up to 10MB
+                </p>
+              </div>
+            </div>
             Plant cuttings available
             <input
               type="number"
@@ -173,7 +204,7 @@ const NewUserPlant = () => {
             </label>
             <button
               type="submit"
-              className="p-2 bg-cyan text-white rounded-lg self-center mt-4"
+              className="bg-emerald-600 text-white p-2 rounded-lg self-center mt-4"
             >
               Make Plant
             </button>
@@ -187,4 +218,3 @@ const NewUserPlant = () => {
 };
 
 export default NewUserPlant;
-

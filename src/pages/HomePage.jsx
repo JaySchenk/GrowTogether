@@ -2,7 +2,7 @@ import React from 'react';
 
 const HomePage = () => {
   return (
-    <div className=" homepage flex items-center justify-center w-full h-screen ">
+    <div className=" flex items-center justify-center w-full h-screen ">
       <div className="text-xl font-bold text-center w-2/3 justify-middle">
         Welcome to GrowTogether, your digital gardening companion that ensures
         your plants thrive and bloom to their fullest potential. Whether you're
