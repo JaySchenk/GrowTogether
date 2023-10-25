@@ -4,7 +4,10 @@ import { SessionContext } from '../contexts/SessionContext';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const { isAuthenticated } = useContext(SessionContext);
   const navigate = useNavigate();
+
+  isAuthenticated && navigate('/uprofile');
 
   const { handleLogin } = useContext(SessionContext);
 
