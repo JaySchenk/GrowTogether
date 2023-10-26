@@ -1,5 +1,6 @@
 // Create and export your context
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from "react";
+import jwt_decode from "jwt-decode";
 
 export const SessionContext = createContext();
 
@@ -7,6 +8,7 @@ export const SessionContext = createContext();
 
 const SessionContextProvider = ({ children }) => {
   const [token, setToken] = useState();
+  const [userId, setUserId] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,8 +25,10 @@ const SessionContextProvider = ({ children }) => {
       );
       if (response.ok) {
         setToken(currentToken);
+        const decoded = jwt_decode(currentToken);
+        setUserId(decoded.user.id);
         setIsAuthenticated(true);
-        window.localStorage.setItem('authToken', currentToken);
+        window.localStorage.setItem("authToken", currentToken);
       }
     } catch (error) {
       console.log(error);
@@ -33,7 +37,7 @@ const SessionContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const tokenFromStorage = window.localStorage.getItem('authToken');
+    const tokenFromStorage = window.localStorage.getItem("authToken");
     if (tokenFromStorage) {
       handleLogin(tokenFromStorage);
     } else {
@@ -41,7 +45,7 @@ const SessionContextProvider = ({ children }) => {
     }
   }, []);
 
-  const fetchWithToken = async (endpoint, callback, method = 'GET', body) => {
+  const fetchWithToken = async (endpoint, callback, method = "GET", body) => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api${endpoint}`,
@@ -49,7 +53,7 @@ const SessionContextProvider = ({ children }) => {
           method,
           headers: {
             Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(body),
         }
@@ -65,6 +69,7 @@ const SessionContextProvider = ({ children }) => {
   return (
     <SessionContext.Provider
       value={{
+        userId,
         fetchWithToken,
         isLoading,
         isAuthenticated,
