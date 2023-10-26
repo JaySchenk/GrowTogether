@@ -59,7 +59,26 @@ const NewUserPlant = () => {
 
       if (response.status === 201) {
         const parsed = await response.json();
-        console.log(parsed);
+        const newUserPlantId = parsed.UserPlant._id;
+
+        const payload = { plants: newUserPlantId };
+
+        const updateResponse = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        if (updateResponse.ok) {
+          console.log("Other collection updated successfully");
+        } else {
+          console.error("Failed to update other collection");
+        }
       }
     } catch (error) {
       console.log(error);
