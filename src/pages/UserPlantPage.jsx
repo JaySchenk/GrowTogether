@@ -1,12 +1,32 @@
+import { useEffect, useState } from "react";
 import NavbarMobile from "../components/NavbarMobile";
 import NewUserPlant from "../components/NewUserPlant";
+import PlantUserCard from "../components/PlantUserCard";
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 const UserPlantPage = () => {
+  const [plants, setPlants] = useState([]);
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/plantcare`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {setPlants(data)})
+
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <div className="flex items-center justify-center">
-      <p className="text-xl font-bold text-center">
-        Here you will see cards of all the plants you've got and the option to add a new plant.
-      </p>
+      {plants.map((plant, index) => (
+        <PlantUserCard key={index} plant={plant} />
+      ))}
       <NewUserPlant />
       <NavbarMobile />
     </div>
