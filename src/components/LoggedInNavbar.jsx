@@ -26,9 +26,6 @@ const LoggedInNavbar = () => {
       <Link to="/uprofile" className="ml-6 hover:underline">
         User Profile
       </Link>
-      <Link to="/createplant" className="ml-6 hover:underline">
-        Create Plant
-      </Link>
     </div>
   );
 };

@@ -25,7 +25,7 @@ const PlantUserCard = ({ plant }) => {
     return null;
   }
 
-  const currentPlant = plants.find(one=>one._id===plant.plantSpecies)
+  const currentPlant = plants.find((one) => one._id === plant.plantSpecies);
 
   return (
     <div className="plant-card">
