@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { useNavigate } from "react-router-dom";
 
@@ -10,10 +10,14 @@ const SignupPage = () => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [telephone, setTelephone] = useState("");
-  const { isAuthenticated } = useContext(SessionContext);
+  const { isAuthenticated, handleLogin } = useContext(SessionContext);
   const navigate = useNavigate();
 
-  isAuthenticated && navigate("/uprofile");
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/uprofile");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,6 +42,8 @@ const SignupPage = () => {
       if (response.status === 201) {
         const parsed = await response.json();
         console.log(parsed);
+        handleLogin(parsed.token);
+        isAuthenticated && navigate("/uprofile");
       }
     } catch (error) {
       console.log(error);
@@ -47,10 +53,7 @@ const SignupPage = () => {
   return (
     <div className="m-auto max-w-md flex flex-col justify-center h-[calc(100vh-100px)]">
       <h1 className="text-xl font-bold text-center">Signup</h1>
-      <form
-        className="flex flex-col gap-4 mt-8"
-        onSubmit={handleSubmit}
-      >
+      <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
         <input
           type="text"
           value={email}
@@ -66,7 +69,6 @@ const SignupPage = () => {
           required
           placeholder="Password"
           className="p-2 border rounded-lg"
-          
         />
         <input
           type="text"
@@ -89,17 +91,17 @@ const SignupPage = () => {
           placeholder="City"
           className="p-2 border rounded-lg"
         />
-          <select
-            autoComplete="country-name"
-            value={country}
-            onChange={(event) => setCountry(event.target.value)}
-            placeholder="Country"
-            className="p-2 border rounded-lg w-full"
-          >
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
-            <option value="Mexico">Mexico</option>
-          </select>
+        <select
+          autoComplete="country-name"
+          value={country}
+          onChange={(event) => setCountry(event.target.value)}
+          placeholder="Country"
+          className="p-2 border rounded-lg w-full"
+        >
+          <option value="United States">United States</option>
+          <option value="Canada">Canada</option>
+          <option value="Mexico">Mexico</option>
+        </select>
         <input
           type="text"
           value={telephone}
@@ -119,4 +121,3 @@ const SignupPage = () => {
 };
 
 export default SignupPage;
-
