@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import NavbarMobile from "../components/NavbarMobile";
 import NewUserPlant from "../components/NewUserPlant";
 import PlantUserCard from "../components/PlantUserCard";
+import { SessionContext } from "../contexts/SessionContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-
 const UserPlantPage = () => {
+  const { userId } = useContext(SessionContext);
   const [plants, setPlants] = useState([]);
+  console.log(plants)
 
   useEffect(() => {
-    fetch(`${API_URL}/api/userplants/65394a2885fd02741b6be230`)
+    fetch(`${API_URL}/api/userplants/${userId }`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
