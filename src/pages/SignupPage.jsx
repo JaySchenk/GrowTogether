@@ -13,7 +13,11 @@ const SignupPage = () => {
   const { isAuthenticated, handleLogin } = useContext(SessionContext);
   const navigate = useNavigate();
 
-  isAuthenticated && navigate(`/uprofile`);
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/uprofile");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

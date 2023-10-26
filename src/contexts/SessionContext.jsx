@@ -26,7 +26,7 @@ const SessionContextProvider = ({ children }) => {
       if (response.ok) {
         setToken(currentToken);
         const decoded = jwt_decode(currentToken);
-        setUserId(decoded.user.id);
+        setUserId(decoded.user);
         setIsAuthenticated(true);
         window.localStorage.setItem("authToken", currentToken);
       }

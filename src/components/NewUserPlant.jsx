@@ -14,7 +14,7 @@ const NewUserPlant = () => {
   const [activityDate, setActivityDate] = useState("");
   const [reminderSettings, setReminderSettings] = useState(true);
 
-  const { handleLogin } = useContext(SessionContext);
+  const { userId } = useContext(SessionContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -76,7 +76,6 @@ const NewUserPlant = () => {
       })
       .then((data) => {
         setPlants(data);
-        console.log(data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -102,7 +101,7 @@ const NewUserPlant = () => {
             >
               <option value="">Pick value</option>
               {plants.map((item) => (
-                <option key={item._id} value={item.species}>
+                <option key={item._id} value={item._id}>
                   {item.species}
                 </option>
               ))}
