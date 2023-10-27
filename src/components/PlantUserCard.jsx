@@ -30,7 +30,6 @@ const PlantUserCard = ({ plant, onDelete  }) => {
   const currentPlant = plants.find((one) => one._id === plant.plantSpecies);
 
     const handleDelete = async () => {
-        console.log(`${API_URL}/api/userplants/${userId}/${plant._id}`)
       try {
         const response = await fetch(`${API_URL}/api/userplants/${userId}/${plant._id}`, {
           method: "DELETE",
