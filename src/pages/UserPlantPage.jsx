@@ -9,6 +9,7 @@ const UserPlantPage = () => {
         add a new plant.
       </p>
       <NewUserPlant type="newProduct" plantId="653b829509d15f41fb4322c4" />
+      <NewUserPlant type="newCare" plantId="653b829509d15f41fb4322c4" />
       <NavbarMobile />
     </div>
   );
