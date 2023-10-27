@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { SessionContext } from "../contexts/SessionContext";
+import { ChevronDoubleRightIcon } from "@heroicons/react/24/outline"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -77,7 +78,7 @@ const PlantUserCard = ({ plant }) => {
         </div>
       </div>
       <div className="plant-link chevron-double-right">
-        <Link to={`/plantcare/${plant.plantSpecies}`}> info </Link>
+        <Link to={`/plantcare/${plant.plantSpecies}`}> <ChevronDoubleRightIcon className="w-8 text-emerald-600"/> </Link>
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ const API_URL = import.meta.env.VITE_API_URL;
 const UserPlantPage = () => {
   const { userId } = useContext(SessionContext);
   const [plants, setPlants] = useState([]);
-  console.log(plants);
 
   useEffect(() => {
     fetch(`${API_URL}/api/userplants/${userId}`)
