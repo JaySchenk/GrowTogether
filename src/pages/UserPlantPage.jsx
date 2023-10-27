@@ -24,7 +24,7 @@ const UserPlantPage = () => {
       })
 
       .catch((error) => console.log(error));
-  }, []);
+  }, [plants]);
 
   const handlePlantDelete = (plantId) => {
     setPlants((plants) => plants.filter((plant) => plant._id !== plantId));

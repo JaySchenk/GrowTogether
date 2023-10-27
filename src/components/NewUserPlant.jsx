@@ -137,6 +137,7 @@ const NewUserPlant = ({ type, plantId }) => {
           <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
             {isPost && (
               <>
+                <p className="-mb-1">Plant name <span className="text-red-500">*</span></p>
                 <input
                   type="text"
                   value={plantName}
@@ -145,6 +146,7 @@ const NewUserPlant = ({ type, plantId }) => {
                   placeholder="Plant name"
                   className="p-2 border rounded-lg"
                 />
+                <p className="-mb-1">Species <span className="text-red-500">*</span></p>
                 <select
                   value={plantSpecies}
                   onChange={(event) => setPlantSpecies(event.target.value)}
@@ -176,7 +178,7 @@ const NewUserPlant = ({ type, plantId }) => {
                         htmlFor="file-upload"
                         className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                       >
-                        <span>Upload a file</span>
+                        <span className="text-emerald-600">Upload a file</span>
                         <input
                           id="file-upload"
                           name="file-upload"
@@ -195,21 +197,19 @@ const NewUserPlant = ({ type, plantId }) => {
                     </p>
                   </div>
                 </div>
-                Plant cuttings available
+                <p className="-mb-1">Plant cuttings available</p>
                 <input
                   type="number"
                   value={plantCutting}
                   onChange={(event) => setPlantCutting(event.target.value)}
-                  required
                   placeholder="Plant cuttings available"
                   className="p-2 border rounded-lg"
                 />{" "}
-                Plant size
+                <p className="-mb-1">Plant size</p>
                 <input
                   type="text"
                   value={plantSize}
                   onChange={(event) => setPlantSize(event.target.value)}
-                  required
                   placeholder="Plant size"
                   className="p-2 border rounded-lg"
                 />
