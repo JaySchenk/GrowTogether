@@ -4,7 +4,7 @@ import { SessionContext } from "../contexts/SessionContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const PlantUserCard = ({ plant, onDelete  }) => {
+const PlantUserCard = ({ plant }) => {
   const [plants, setPlants] = useState([]);
   const { userId } = useContext(SessionContext);
 
@@ -46,17 +46,17 @@ const PlantUserCard = ({ plant, onDelete  }) => {
     };
 
     return (
-    <div className="plant-card">
+    <div className="plant-card w-11/12 md:w-1/2 max-w-2xl duration-300">
       <div className="plant-info -ml-9">
         {plant.plantPicture ? (
           <img
-            className="rounded-md"
+            className="rounded-full sm:rounded-2xl h-1/5 duration-300"
             src={plant.plantPicture}
             alt={plant.plantSpecies}
           />
         ) : (
           <img
-            className="rounded-2xl"
+            className="rounded-full sm:rounded-2xl h-28 lg:h-36 duration-300"
             src="https://ih1.redbubble.net/image.949338818.5434/aps,504x498,large,transparent-pad,600x600,f8f8f8.jpg"
             alt={plant.plantSpecies}
           />
@@ -68,10 +68,10 @@ const PlantUserCard = ({ plant, onDelete  }) => {
           <p className="font-medium text-base text-gray-600">
             {currentPlant?.species}
           </p>
-          <button className="bg-emerald-600 text-white p-3 px-5 rounded-full self-center mt-10">
+          <button className="bg-emerald-600 text-white p-2 sm:p-3 px-3 sm:px-5 rounded-full self-center mt-4 sm:mt-10">
             Edit
           </button>
-          <button onClick={handleDelete} className="bg-white text-emerald-600 p-3 rounded-full self-center mt-10 ml-4">
+          <button onClick={handleDelete} className="bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-10 ml-4 sm:ml-4">
             Delete
           </button>
         </div>

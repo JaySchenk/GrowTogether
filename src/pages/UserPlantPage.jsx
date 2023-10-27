@@ -3,6 +3,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import PlantUserCard from "../components/PlantUserCard";
 import { SessionContext } from "../contexts/SessionContext";
 import { Link } from "react-router-dom";
+import NoPlant from "../../public/no_plants.jpg"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -26,10 +27,6 @@ const UserPlantPage = () => {
       .catch((error) => console.log(error));
   }, [plants]);
 
-  const handlePlantDelete = (plantId) => {
-    setPlants((plants) => plants.filter((plant) => plant._id !== plantId));
-  };
-
   return (
     <div className="flex flex-col items-center justify-center">
       <Link to={`/createplant`}>
@@ -39,9 +36,9 @@ const UserPlantPage = () => {
         + Create
       </button>
       </Link>
-      {plants.map((plant, index) => (
-        <PlantUserCard key={index} plant={plant} onDelete={handlePlantDelete} /> 
-      ))}
+      {plants.length?plants.map((plant, index) => (
+        <PlantUserCard key={index} plant={plant} /> 
+      )):<div><p className="text-center font-medium text-gray-600 mt-6">Add your first plant</p><img className="img-no-plant max-w-1/2 md:max-w-sm" src={NoPlant}/></div>}
       <NavbarMobile />
     </div>
   );

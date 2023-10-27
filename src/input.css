@@ -58,7 +58,6 @@ button:focus-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 700px;
 }
 
 .plant-info {
@@ -73,7 +72,7 @@ button:focus-visible {
 }
 
 .plant-card img {
-  height: 9em;
+  /* height: 9em; */
   /* margin-bottom: 2em; */
 }
 
@@ -89,6 +88,10 @@ button:focus-visible {
   justify-content: space-evenly;
   padding-top: 100px;
   padding: 100px 29px 0;
+}
+
+.img-no-plant{
+  filter:hue-rotate(270deg);
 }
 
 
