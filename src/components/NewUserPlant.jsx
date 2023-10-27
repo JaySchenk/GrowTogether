@@ -17,6 +17,7 @@ const NewUserPlant = ({ type, plantId }) => {
   const [activity, setActivity] = useState("");
   const [activityDate, setActivityDate] = useState("");
   const [reminderSettings, setReminderSettings] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const { userId } = useContext(SessionContext);
 
@@ -28,6 +29,12 @@ const NewUserPlant = ({ type, plantId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+    setIsSubmitting(true)
+    
     const payload = {
       plantname: plantName,
       plantSpecies: plantSpecies,
@@ -119,7 +126,7 @@ const NewUserPlant = ({ type, plantId }) => {
       })
       .catch((error) => console.log(error));
   }, []);
-
+  
   return (
     <div className="m-auto max-w-md flex flex-col justify-center">
       {plants.length > 0 && (isPost || isPut) ? (
