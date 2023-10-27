@@ -26,6 +26,10 @@ const UserPlantPage = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  const handlePlantDelete = (plantId) => {
+    setPlants((plants) => plants.filter((plant) => plant._id !== plantId));
+  };
+
   return (
     <div className="flex flex-col items-center justify-center">
       <Link to={`/createplant`}>
@@ -36,7 +40,7 @@ const UserPlantPage = () => {
       </button>
       </Link>
       {plants.map((plant, index) => (
-        <PlantUserCard key={index} plant={plant} />
+        <PlantUserCard key={index} plant={plant} onDelete={handlePlantDelete} /> 
       ))}
       <NavbarMobile />
     </div>

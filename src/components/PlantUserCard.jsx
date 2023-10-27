@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { SessionContext } from "../contexts/SessionContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const PlantUserCard = ({ plant }) => {
+const PlantUserCard = ({ plant, onDelete  }) => {
   const [plants, setPlants] = useState([]);
+  const { userId } = useContext(SessionContext);
 
   useEffect(() => {
     fetch(`${API_URL}/api/plantcare`)
@@ -27,9 +29,26 @@ const PlantUserCard = ({ plant }) => {
 
   const currentPlant = plants.find((one) => one._id === plant.plantSpecies);
 
-  return (
+    const handleDelete = async () => {
+        console.log(`${API_URL}/api/userplants/${userId}/${plant._id}`)
+      try {
+        const response = await fetch(`${API_URL}/api/userplants/${userId}/${plant._id}`, {
+          method: "DELETE",
+        });
+  
+        if (response.status === 202) {
+            onDelete(plant._id);
+        } else {
+          console.error("Failed to delete plant");
+        }
+      } catch (error) {
+        console.error("Error while deleting plant", error);
+      }
+    };
+
+    return (
     <div className="plant-card">
-      <div className="plant-info">
+      <div className="plant-info -ml-9">
         {plant.plantPicture ? (
           <img
             className="rounded-md"
@@ -44,12 +63,18 @@ const PlantUserCard = ({ plant }) => {
           />
         )}
         <div className="text-left ml-4">
-          <p className="font-semibold text-lg  text-sky-900">
+          <p className="font-semibold text-lg capitalize text-sky-900">
             {plant.plantname}
           </p>
           <p className="font-medium text-base text-gray-600">
-            {currentPlant.species}
+            {currentPlant?.species}
           </p>
+          <button className="bg-emerald-600 text-white p-3 px-5 rounded-full self-center mt-10">
+            Edit
+          </button>
+          <button onClick={handleDelete} className="bg-white text-emerald-600 p-3 rounded-full self-center mt-10 ml-4">
+            Delete
+          </button>
         </div>
       </div>
       <div className="plant-link chevron-double-right">
