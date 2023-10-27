@@ -38,13 +38,11 @@ const NewUserPlant = () => {
       ],
       reminderSettings: reminderSettings,
     };
-
     Object.keys(payload).forEach((key) => {
       if (payload[key] === undefined || payload[key] === null) {
         delete payload[key];
       }
     });
-
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/userplants`,
@@ -169,7 +167,8 @@ const NewUserPlant = () => {
               required
               placeholder="Plant cuttings available"
               className="p-2 border rounded-lg"
-            />
+            />{" "}
+            Plant size
             <input
               type="text"
               value={plantSize}
@@ -178,6 +177,7 @@ const NewUserPlant = () => {
               placeholder="Plant size"
               className="p-2 border rounded-lg"
             />
+            Product's used on plant
             <input
               type="text"
               value={product}
@@ -194,6 +194,7 @@ const NewUserPlant = () => {
               placeholder="Date of using products"
               className="p-2 border rounded-lg"
             />
+            Plant care activity
             <input
               type="text"
               value={activity}
