@@ -7,7 +7,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 import PlantCarePage from "./pages/PlantCarePage";
 import CreatePlant from "./pages/CreatePlant";
 import PlantLibrary from "./pages/PlantLibrary";
-import PrivateRoute from "./components/privateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import { SessionContext } from "./contexts/SessionContext";
 import { useContext, useEffect } from "react";
 import LoggedInNavbar from "./components/LoggedInNavbar";
@@ -23,9 +23,7 @@ function App() {
     <div>
       <header className=" sticky top-0 p-8 flex justify-between items-center h-16">
         <Link to="/">
-          <Button name={"Home Page"}>
-            {/* <AiFillHome /> */}
-          </Button>
+          <Button name={"Home Page"}>{/* <AiFillHome /> */}</Button>
         </Link>
         <div className="w-2/3 flex justify-end">
           {isAuthenticated && !isLoading ? (
