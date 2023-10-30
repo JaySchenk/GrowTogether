@@ -27,7 +27,7 @@ const NewUserPlant = ({ type, plantId }) => {
     setTimeout(() => {
     if (!isSubmitting) {
       navigate(-1);
-    }}, 100)
+    }}, 400)
   };
 
   const handleSubmit = async (event) => {
