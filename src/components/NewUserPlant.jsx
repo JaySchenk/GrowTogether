@@ -24,7 +24,10 @@ const NewUserPlant = ({ type, plantId }) => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1);
+    setTimeout(() => {
+    if (!isSubmitting) {
+      navigate(-1);
+    }}, 100)
   };
 
   const handleSubmit = async (event) => {
@@ -78,7 +81,7 @@ const NewUserPlant = ({ type, plantId }) => {
           const newUserPlantId = parsed.UserPlant._id;
 
           const payload = { plants: newUserPlantId };
-
+          setIsSubmitting(false)
           const updateResponse = await fetch(
             `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
             {

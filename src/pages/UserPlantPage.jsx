@@ -33,9 +33,7 @@ const UserPlantPage = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
       fetchPlants();
-    }, 500)
   }, [navigate]);
 
   return (
