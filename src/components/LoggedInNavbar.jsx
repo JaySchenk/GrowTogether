@@ -9,22 +9,25 @@ const LoggedInNavbar = () => {
 
   function handleClick() {
     localStorage.removeItem("authToken");
-    console.log("pressed")
+    console.log("pressed");
     setIsAuthenticated(false);
     navigate("/login");
   }
 
   return (
-    <div className="flex">
+    <div className='flex'>
       <Button name={"Log Out"} onClick={handleClick}></Button>
-      <Link to="/uplant">
+      <Link to='/uplant'>
         <Button name={"User Plants"}></Button>
       </Link>
-      <Link to="/uprofile">
+      <Link to='/uprofile'>
         <Button name={"User Profile"}></Button>
       </Link>
-      <Link to="/createplant">
+      <Link to='/createplant'>
         <Button name={"Create Plant"}></Button>
+      </Link>
+      <Link to='/plantcare' className=' hover:underline'>
+        <Button name={"Plant Care Library"}></Button>
       </Link>
     </div>
   );

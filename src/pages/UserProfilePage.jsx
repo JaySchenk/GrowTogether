@@ -13,6 +13,7 @@ const UserProfilePage = () => {
   const [user, setUser] = useState({
     name: "",
     surname: "",
+    profilePicture: "",
     address: {
       streetHouseNumb: "",
       city: "",
@@ -22,9 +23,9 @@ const UserProfilePage = () => {
   });
 
   const handleGoBack = () => {
-      navigate(-1);
+    navigate(-1);
   };
-  
+
   const fetchUsers = () => {
     fetch(`${API_URL}/api/getUser/${userId}`)
       .then((response) => {
@@ -44,15 +45,17 @@ const UserProfilePage = () => {
 
   useEffect(() => {
     fetchUsers();
-}, []);
+  }, []);
 
   const handleUpdateUser = () => {
+    const form_data = new FormData();
+
+    form_data.append("Data", JSON.stringify(user));
+    form_data.append("profilePicture", user.profilePicture);
+
     fetch(`${API_URL}/api/userUpdate/${userId}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
+      body: form_data,
     })
       .then((response) => {
         if (response.ok) {
@@ -63,7 +66,7 @@ const UserProfilePage = () => {
       })
       .then((data) => {
         console.log("User data updated successfully:", data);
-        handleGoBack()
+        handleGoBack();
       })
       .catch((error) => {
         console.error("Error updating user data:", error);
@@ -71,41 +74,69 @@ const UserProfilePage = () => {
   };
 
   return (
-    <div className="flex items-center flex-col justify-center">
-      <div className="flex flex-col justify-center gap-4 mt-10">
-        <img
-          className="h-12 w-12 rounded mt-10"
-          src={Avatar}
-          alt="Default avatar"
-        />
+    <div className='flex items-center flex-col justify-center'>
+      <div className='flex flex-col justify-center gap-4 mt-10'>
+        {user.profilePicture ? (
+          <div>
+            <img
+              alt='not found'
+              width={"150px"}
+              src={
+                user.profilePicture.path ||
+                URL.createObjectURL(user.profilePicture)
+              }
+            />
+            <button
+              type='button'
+              className='text-red-500 text-xs'
+              onClick={() => setUser({ ...user, profilePicture: "" })}
+            >
+              Remove
+            </button>
+          </div>
+        ) : (
+          <>
+            <img
+              className='h-12 w-12 rounded mt-10'
+              src={Avatar}
+              alt='Default avatar'
+            />
+            <input
+              className='block w-full text-sm border rounded-lg cursor-pointer text-gray-400 focus:outline-none'
+              id='image'
+              name='image'
+              type='file'
+              value=''
+              onChange={(event) => {
+                setUser({ ...user, profilePicture: event.target.files[0] });
+              }}
+            />
+          </>
+        )}
 
-        <p className="-mb-1">Profile Picture</p>
+        <p className='-mb-1'>Profile Picture</p>
+
+        <p className='-mb-1'>Name</p>
         <input
-          className="block w-full text-sm border rounded-lg cursor-pointer text-gray-400 focus:outline-none"
-          id="file_input"
-          type="file"
-        />
-        <p className="-mb-1">Name</p>
-        <input
-          type="text"
+          type='text'
           value={user.name}
           onChange={(event) => setUser({ ...user, name: event.target.value })}
-          placeholder={user.name? user.name:"Name"}
-          className="p-2  w-full border rounded-lg"
+          placeholder={user.name ? user.name : "Name"}
+          className='p-2  w-full border rounded-lg'
         />
-        <p className="-mb-1">Surname</p>
+        <p className='-mb-1'>Surname</p>
         <input
-          type="text"
+          type='text'
           value={user.surname}
           onChange={(event) =>
             setUser({ ...user, surname: event.target.value })
           }
-          placeholder={user.surname? user.surname:"Surname"}
-          className="p-2  w-full border rounded-lg"
+          placeholder={user.surname ? user.surname : "Surname"}
+          className='p-2  w-full border rounded-lg'
         />
-        <p className="-mb-1">Street, House number</p>
+        <p className='-mb-1'>Street, House number</p>
         <input
-          type="text"
+          type='text'
           value={user.address.streetHouseNumb}
           onChange={(event) =>
             setUser({
@@ -113,12 +144,16 @@ const UserProfilePage = () => {
               address: { ...user.address, streetHouseNumb: event.target.value },
             })
           }
-          placeholder={user.address.streetHouseNumb? user.address.streetHouseNumb:"Street, House number"}
-          className="p-2  w-full border rounded-lg"
+          placeholder={
+            user.address.streetHouseNumb
+              ? user.address.streetHouseNumb
+              : "Street, House number"
+          }
+          className='p-2  w-full border rounded-lg'
         />
-        <p className="-mb-1">City</p>
+        <p className='-mb-1'>City</p>
         <input
-          type="text"
+          type='text'
           value={user.address.city}
           onChange={(event) =>
             setUser({
@@ -126,12 +161,12 @@ const UserProfilePage = () => {
               address: { ...user.address, city: event.target.value },
             })
           }
-          placeholder={user.address.city? user.address.city:"City"}
-          className="p-2  w-full border rounded-lg"
+          placeholder={user.address.city ? user.address.city : "City"}
+          className='p-2  w-full border rounded-lg'
         />
-        <p className="-mb-1">Country</p>
+        <p className='-mb-1'>Country</p>
         <input
-          type="text"
+          type='text'
           value={user.address.country}
           onChange={(event) =>
             setUser({
@@ -139,22 +174,22 @@ const UserProfilePage = () => {
               address: { ...user.address, country: event.target.value },
             })
           }
-          placeholder={user.address.country?user.address.country:"Country"}
-          className="p-2  w-full border rounded-lg"
+          placeholder={user.address.country ? user.address.country : "Country"}
+          className='p-2  w-full border rounded-lg'
         />
-        <p className="-mb-1">Phone number</p>
+        <p className='-mb-1'>Phone number</p>
         <input
-          type="text"
+          type='text'
           value={user.telephone}
           onChange={(event) =>
             setUser({ ...user, telephone: event.target.value })
           }
-          placeholder={user.telephone?user.telephone:"Phone Number"}
-          className="p-2 w-full border rounded-lg"
+          placeholder={user.telephone ? user.telephone : "Phone Number"}
+          className='p-2 w-full border rounded-lg'
         />
       </div>
       <button
-        className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4"
+        className='bg-emerald-600 text-white p-3 rounded-full self-center mt-4'
         onClick={handleUpdateUser}
       >
         Submit

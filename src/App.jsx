@@ -21,29 +21,26 @@ function App() {
 
   return (
     <div>
-      <header className=" sticky top-0 p-8 flex justify-between items-center h-16">
-        <Link to="/">
+      <header className=' sticky top-0 p-8 flex justify-between items-center h-16'>
+        <Link to='/'>
           <Button name={"Home Page"}></Button>
         </Link>
-        <div className="w-2/3 flex justify-end">
+        <div className='w-2/3 flex justify-end'>
           {isAuthenticated && !isLoading ? (
             <LoggedInNavbar />
           ) : (
             <LoggedOutNavbar />
           )}
-          <Link to="/plantcare" className=" hover:underline ml-4">
-            <Button name={"Plant Care Library"}></Button>
-          </Link>
         </div>
       </header>
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/plantcare" element={<PlantLibrary />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/signup' element={<SignupPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/plantcare' element={<PlantLibrary />} />
         <Route
-          path="/uplant"
+          path='/uplant'
           element={
             <PrivateRoute>
               <UserPlantPage />
@@ -51,16 +48,16 @@ function App() {
           }
         />
         <Route
-          path="/uprofile"
+          path='/uprofile'
           element={
             <PrivateRoute>
               <UserProfilePage />
             </PrivateRoute>
           }
         />
-        <Route path="/plantcare/:plantCareId" element={<PlantCarePage />} />
+        <Route path='/plantcare/:plantCareId' element={<PlantCarePage />} />
         <Route
-          path="/createplant"
+          path='/createplant'
           element={
             <PrivateRoute>
               <CreatePlant />
