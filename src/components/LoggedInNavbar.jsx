@@ -22,9 +22,12 @@ const LoggedInNavbar = () => {
       <Link to='/uprofile'>
         <Button name={'User Profile'}></Button>
       </Link>
+<<<<<<< HEAD
       <Link to='/createplant'>
         <Button name={'Create Plant'}></Button>
       </Link>
+=======
+>>>>>>> 1b32ddee590b370cbbbbdb5f120286abff1de826
     </div>
   );
 };

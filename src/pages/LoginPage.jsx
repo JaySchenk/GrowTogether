@@ -64,7 +64,7 @@ const LoginPage = () => {
         />
         <button
           type="submit"
-          className="bg-emerald-600 text-white p-2 rounded-lg self-center mt-4"
+          className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4"
         >
           Connect
         </button>

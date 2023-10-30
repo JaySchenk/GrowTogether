@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
+import { useNavigate } from "react-router-dom";
 
 const NewUserPlant = ({ type, plantId }) => {
   const isPost = type === "newPlant";
@@ -16,11 +17,24 @@ const NewUserPlant = ({ type, plantId }) => {
   const [activity, setActivity] = useState("");
   const [activityDate, setActivityDate] = useState("");
   const [reminderSettings, setReminderSettings] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const { userId } = useContext(SessionContext);
 
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+    setIsSubmitting(true)
+    
     const payload = {
       plantname: plantName,
       plantSpecies: plantSpecies,
@@ -112,7 +126,7 @@ const NewUserPlant = ({ type, plantId }) => {
       })
       .catch((error) => console.log(error));
   }, []);
-
+  
   return (
     <div className="m-auto max-w-md flex flex-col justify-center">
       {plants.length > 0 && (isPost || isPut) ? (
@@ -123,6 +137,7 @@ const NewUserPlant = ({ type, plantId }) => {
           <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
             {isPost && (
               <>
+                <p className="-mb-1">Plant name <span className="text-red-500">*</span></p>
                 <input
                   type="text"
                   value={plantName}
@@ -131,6 +146,7 @@ const NewUserPlant = ({ type, plantId }) => {
                   placeholder="Plant name"
                   className="p-2 border rounded-lg"
                 />
+                <p className="-mb-1">Species <span className="text-red-500">*</span></p>
                 <select
                   value={plantSpecies}
                   onChange={(event) => setPlantSpecies(event.target.value)}
@@ -162,7 +178,7 @@ const NewUserPlant = ({ type, plantId }) => {
                         htmlFor="file-upload"
                         className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                       >
-                        <span>Upload a file</span>
+                        <span className="text-emerald-600">Upload a file</span>
                         <input
                           id="file-upload"
                           name="file-upload"
@@ -181,21 +197,19 @@ const NewUserPlant = ({ type, plantId }) => {
                     </p>
                   </div>
                 </div>
-                Plant cuttings available
+                <p className="-mb-1">Plant cuttings available</p>
                 <input
                   type="number"
                   value={plantCutting}
                   onChange={(event) => setPlantCutting(event.target.value)}
-                  required
                   placeholder="Plant cuttings available"
                   className="p-2 border rounded-lg"
                 />{" "}
-                Plant size
+                <p className="-mb-1">Plant size</p>
                 <input
                   type="text"
                   value={plantSize}
                   onChange={(event) => setPlantSize(event.target.value)}
-                  required
                   placeholder="Plant size"
                   className="p-2 border rounded-lg"
                 />
@@ -255,7 +269,8 @@ const NewUserPlant = ({ type, plantId }) => {
             </label>
             <button
               type="submit"
-              className="bg-emerald-600 text-white p-2 rounded-lg self-center mt-4"
+              onClick={handleGoBack}
+              className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4 "
             >
               {isPost ? "Make Plant" : "Save Changes"}
             </button>
