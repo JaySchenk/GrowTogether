@@ -7,7 +7,6 @@ const UserProfilePage = () => {
       <p className="text-xl font-bold text-center">
         Here you will see all information that's linked to your UserId
       </p>
-      <UpdatePlant plantId="65379e46941335494d068a05" />
       <NavbarMobile />
     </div>
   );
