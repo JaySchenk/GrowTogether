@@ -16,7 +16,7 @@ const UpdatePlant = ({ plantId }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const payload = {
-      plantname: plantName,
+      plantName: plantName,
       plantSpecies: plantSpecies,
       plantPicture,
       plantCutting: plantCutting,
@@ -63,7 +63,7 @@ const UpdatePlant = ({ plantId }) => {
             return response.json();
           })
           .then((userPlantData) => {
-            setPlantName(userPlantData.plant.plantname);
+            setPlantName(userPlantData.plant.plantName);
             setPlantSpecies(userPlantData.plant.plantSpecies._id);
             setPlantPicture(userPlantData.plant.plantPicture);
             setPlantCutting(userPlantData.plant.plantCutting);
@@ -78,24 +78,24 @@ const UpdatePlant = ({ plantId }) => {
   }, []);
 
   return (
-    <div className="m-auto max-w-md flex flex-col justify-center">
-      <h1 className="text-xl font-bold text-center">Update plant</h1>
+    <div className='m-auto max-w-md flex flex-col justify-center'>
+      <h1 className='text-xl font-bold text-center'>Update plant</h1>
       {plantName ? (
-        <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
+        <form className='flex flex-col gap-4 mt-8' onSubmit={handleSubmit}>
           <input
-            type="text"
+            type='text'
             value={plantName}
             onChange={(event) => setPlantName(event.target.value)}
             required
-            placeholder="Plant name"
-            className="p-2 border rounded-lg"
+            placeholder='Plant name'
+            className='p-2 border rounded-lg'
           />
           <select
             value={plantSpecies}
             onChange={(event) => setPlantSpecies(event.target.value)}
-            className="p-2 border rounded-lg"
+            className='p-2 border rounded-lg'
           >
-            <option value="">Pick value</option>
+            <option value=''>Pick value</option>
             {plants.map((item) => (
               <option key={item._id} value={item._id}>
                 {item.species}
@@ -103,41 +103,41 @@ const UpdatePlant = ({ plantId }) => {
             ))}
           </select>
           <input
-            type="text"
+            type='text'
             value={plantPicture}
             onChange={(event) => setPlantPicture(event.target.value)}
-            placeholder="Plant picture"
-            className="p-2 border rounded-lg"
+            placeholder='Plant picture'
+            className='p-2 border rounded-lg'
           />
           <input
-            type="number"
+            type='number'
             value={plantCutting}
             onChange={(event) => setPlantCutting(event.target.value)}
             required
-            placeholder="Plant cuttings available"
-            className="p-2 border rounded-lg"
+            placeholder='Plant cuttings available'
+            className='p-2 border rounded-lg'
           />
           <input
-            type="text"
+            type='text'
             value={plantSize}
             onChange={(event) => setPlantSize(event.target.value)}
             required
-            placeholder="Plant size"
-            className="p-2 border rounded-lg"
+            placeholder='Plant size'
+            className='p-2 border rounded-lg'
           />
 
-          <label className="flex items-center">
+          <label className='flex items-center'>
             <input
-              type="checkbox"
+              type='checkbox'
               defaultChecked
               onChange={(event) => setReminderSettings(event.target.checked)}
-              className="mr-2"
+              className='mr-2'
             />
             I want to receive plant care reminders
           </label>
           <button
-            type="submit"
-            className="bg-emerald-600 text-white p-2 rounded-lg self-center mt-4"
+            type='submit'
+            className='bg-emerald-600 text-white p-2 rounded-lg self-center mt-4'
           >
             Update Plant
           </button>
