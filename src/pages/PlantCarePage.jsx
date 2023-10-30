@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import NavbarMobile from "../components/NavbarMobile";
-import Light from "../../public/light.png"
+import Light from "/light.png"
 
 const API_URL = import.meta.env.VITE_API_URL;
 

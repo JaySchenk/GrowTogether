@@ -1,3 +1,5 @@
+@config "../tailwind.config.js";
+
 /*
 ! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
 */
@@ -434,7 +436,7 @@ video {
   display: none;
 }
 
-*, ::before, ::after {
+*, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -484,7 +486,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-::backdrop {
+::backdrop{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -625,7 +627,7 @@ button:focus-visible {
   filter:hue-rotate(270deg);
 }
 
-.sr-only {
+.sr-only{
   position: absolute;
   width: 1px;
   height: 1px;
@@ -637,436 +639,436 @@ button:focus-visible {
   border-width: 0;
 }
 
-.relative {
+.relative{
   position: relative;
 }
 
-.sticky {
+.sticky{
   position: sticky;
 }
 
-.top-0 {
+.top-0{
   top: 0px;
 }
 
-.m-auto {
+.m-auto{
   margin: auto;
 }
 
-.mx-auto {
+.mx-auto{
   margin-left: auto;
   margin-right: auto;
 }
 
-.-mb-1 {
+.-mb-1{
   margin-bottom: -0.25rem;
 }
 
-.-ml-9 {
+.-ml-9{
   margin-left: -2.25rem;
 }
 
-.mb-2 {
+.mb-2{
   margin-bottom: 0.5rem;
 }
 
-.mb-4 {
+.mb-4{
   margin-bottom: 1rem;
 }
 
-.ml-4 {
+.ml-4{
   margin-left: 1rem;
 }
 
-.mr-2 {
+.mr-2{
   margin-right: 0.5rem;
 }
 
-.mt-10 {
+.mt-10{
   margin-top: 2.5rem;
 }
 
-.mt-2 {
+.mt-2{
   margin-top: 0.5rem;
 }
 
-.mt-4 {
+.mt-4{
   margin-top: 1rem;
 }
 
-.mt-6 {
+.mt-6{
   margin-top: 1.5rem;
 }
 
-.mt-8 {
+.mt-8{
   margin-top: 2rem;
 }
 
-.flex {
+.flex{
   display: flex;
 }
 
-.h-1\/5 {
+.h-1\/5{
   height: 20%;
 }
 
-.h-12 {
+.h-12{
   height: 3rem;
 }
 
-.h-16 {
+.h-16{
   height: 4rem;
 }
 
-.h-28 {
+.h-28{
   height: 7rem;
 }
 
-.h-\[calc\(100vh-100px\)\] {
+.h-\[calc\(100vh-100px\)\]{
   height: calc(100vh - 100px);
 }
 
-.h-screen {
+.h-screen{
   height: 100vh;
 }
 
-.max-h-32 {
+.max-h-32{
   max-height: 8rem;
 }
 
-.w-11\/12 {
+.w-11\/12{
   width: 91.666667%;
 }
 
-.w-12 {
+.w-12{
   width: 3rem;
 }
 
-.w-2\/3 {
+.w-2\/3{
   width: 66.666667%;
 }
 
-.w-8 {
+.w-8{
   width: 2rem;
 }
 
-.w-full {
+.w-full{
   width: 100%;
 }
 
-.max-w-2xl {
+.max-w-2xl{
   max-width: 42rem;
 }
 
-.max-w-md {
+.max-w-md{
   max-width: 28rem;
 }
 
-.grow {
+.grow{
   flex-grow: 1;
 }
 
-.cursor-pointer {
+.cursor-pointer{
   cursor: pointer;
 }
 
-.flex-col {
+.flex-col{
   flex-direction: column;
 }
 
-.items-center {
+.items-center{
   align-items: center;
 }
 
-.justify-end {
+.justify-end{
   justify-content: flex-end;
 }
 
-.justify-center {
+.justify-center{
   justify-content: center;
 }
 
-.justify-between {
+.justify-between{
   justify-content: space-between;
 }
 
-.gap-4 {
+.gap-4{
   gap: 1rem;
 }
 
-.self-center {
+.self-center{
   align-self: center;
 }
 
-.rounded-full {
+.rounded-full{
   border-radius: 9999px;
 }
 
-.rounded-lg {
+.rounded-lg{
   border-radius: 0.5rem;
 }
 
-.rounded-md {
+.rounded-md{
   border-radius: 0.375rem;
 }
 
-.border {
+.border{
   border-width: 1px;
 }
 
-.border-dashed {
+.border-dashed{
   border-style: dashed;
 }
 
-.border-gray-900\/25 {
+.border-gray-900\/25{
   border-color: rgb(17 24 39 / 0.25);
 }
 
-.bg-emerald-600 {
+.bg-emerald-600{
   --tw-bg-opacity: 1;
   background-color: rgb(5 150 105 / var(--tw-bg-opacity));
 }
 
-.bg-white {
+.bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.p-2 {
+.p-2{
   padding: 0.5rem;
 }
 
-.p-3 {
+.p-3{
   padding: 0.75rem;
 }
 
-.p-8 {
+.p-8{
   padding: 2rem;
 }
 
-.px-2 {
+.px-2{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
 
-.px-3 {
+.px-3{
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
 
-.px-4 {
+.px-4{
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.px-6 {
+.px-6{
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-.py-10 {
+.py-10{
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
 
-.py-2 {
+.py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
-.pl-1 {
+.pl-1{
   padding-left: 0.25rem;
 }
 
-.text-left {
+.text-left{
   text-align: left;
 }
 
-.text-center {
+.text-center{
   text-align: center;
 }
 
-.text-4xl {
+.text-4xl{
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
 
-.text-base {
+.text-base{
   font-size: 1rem;
   line-height: 1.5rem;
 }
 
-.text-lg {
+.text-lg{
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
-.text-sm {
+.text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
-.text-xl {
+.text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
-.text-xs {
+.text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
 }
 
-.font-bold {
+.font-bold{
   font-weight: 700;
 }
 
-.font-medium {
+.font-medium{
   font-weight: 500;
 }
 
-.font-normal {
+.font-normal{
   font-weight: 400;
 }
 
-.font-semibold {
+.font-semibold{
   font-weight: 600;
 }
 
-.capitalize {
+.capitalize{
   text-transform: capitalize;
 }
 
-.leading-5 {
+.leading-5{
   line-height: 1.25rem;
 }
 
-.leading-6 {
+.leading-6{
   line-height: 1.5rem;
 }
 
-.text-emerald-600 {
+.text-emerald-600{
   --tw-text-opacity: 1;
   color: rgb(5 150 105 / var(--tw-text-opacity));
 }
 
-.text-gray-300 {
+.text-gray-300{
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
-.text-gray-600 {
+.text-gray-600{
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
-.text-indigo-600 {
+.text-indigo-600{
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
-.text-red-500 {
+.text-red-500{
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
-.text-sky-900 {
+.text-sky-900{
   --tw-text-opacity: 1;
   color: rgb(12 74 110 / var(--tw-text-opacity));
 }
 
-.text-sky-950 {
+.text-sky-950{
   --tw-text-opacity: 1;
   color: rgb(8 47 73 / var(--tw-text-opacity));
 }
 
-.text-white {
+.text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.shadow-\[rgba\(30\2c 30\2c 15\2c 0\.5\)_0px_4px_14px_0px\] {
+.shadow-\[rgba\(30\2c 30\2c 15\2c 0\.5\)_0px_4px_14px_0px\]{
   --tw-shadow: rgba(30,30,15,0.5) 0px 4px 14px 0px;
   --tw-shadow-colored: 0px 4px 14px 0px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.duration-300 {
+.duration-300{
   transition-duration: 300ms;
 }
 
-.focus-within\:outline-none:focus-within {
+.focus-within\:outline-none:focus-within{
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 
-.focus-within\:ring-2:focus-within {
+.focus-within\:ring-2:focus-within{
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.focus-within\:ring-indigo-600:focus-within {
+.focus-within\:ring-indigo-600:focus-within{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(79 70 229 / var(--tw-ring-opacity));
 }
 
-.focus-within\:ring-offset-2:focus-within {
+.focus-within\:ring-offset-2:focus-within{
   --tw-ring-offset-width: 2px;
 }
 
-.hover\:bg-emerald-800:hover {
+.hover\:bg-emerald-800:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(6 95 70 / var(--tw-bg-opacity));
 }
 
-.hover\:text-indigo-500:hover {
+.hover\:text-indigo-500:hover{
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 
-.hover\:underline:hover {
+.hover\:underline:hover{
   text-decoration-line: underline;
 }
 
-@media (min-width: 640px) {
-  .sm\:ml-4 {
+@media (min-width: 640px){
+  .sm\:ml-4{
     margin-left: 1rem;
   }
 
-  .sm\:mt-10 {
+  .sm\:mt-10{
     margin-top: 2.5rem;
   }
 
-  .sm\:hidden {
+  .sm\:hidden{
     display: none;
   }
 
-  .sm\:rounded-2xl {
+  .sm\:rounded-2xl{
     border-radius: 1rem;
   }
 
-  .sm\:p-3 {
+  .sm\:p-3{
     padding: 0.75rem;
   }
 
-  .sm\:px-5 {
+  .sm\:px-5{
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
 }
 
-@media (min-width: 768px) {
-  .md\:w-1\/2 {
+@media (min-width: 768px){
+  .md\:w-1\/2{
     width: 50%;
   }
 
-  .md\:max-w-sm {
+  .md\:max-w-sm{
     max-width: 24rem;
   }
 }
 
-@media (min-width: 1024px) {
-  .lg\:h-36 {
+@media (min-width: 1024px){
+  .lg\:h-36{
     height: 9rem;
   }
 }

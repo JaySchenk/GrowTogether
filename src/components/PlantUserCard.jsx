@@ -5,7 +5,7 @@ import { ChevronDoubleRightIcon } from "@heroicons/react/24/outline"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const PlantUserCard = ({ plant }) => {
+const PlantUserCard = ({ plant, fetchPlants }) => {
   const [plants, setPlants] = useState([]);
   const { userId } = useContext(SessionContext);
 
@@ -27,6 +27,9 @@ const PlantUserCard = ({ plant }) => {
   if (!plants.length) {
     return null;
   }
+  const handleFetchPlants = () => {
+    fetchPlants();
+  };
 
   const currentPlant = plants.find((one) => one._id === plant.plantSpecies);
 
@@ -37,7 +40,7 @@ const PlantUserCard = ({ plant }) => {
         });
   
         if (response.status === 202) {
-            onDelete(plant._id);
+          handleFetchPlants();
         } else {
           console.error("Failed to delete plant");
         }

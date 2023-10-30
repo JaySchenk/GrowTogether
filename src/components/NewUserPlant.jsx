@@ -151,6 +151,7 @@ const NewUserPlant = ({ type, plantId }) => {
                   value={plantSpecies}
                   onChange={(event) => setPlantSpecies(event.target.value)}
                   className="p-2 border rounded-lg"
+                  required
                 >
                   <option value="">Pick value</option>
                   {plants.map((item) => (

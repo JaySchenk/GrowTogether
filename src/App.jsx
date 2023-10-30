@@ -23,7 +23,7 @@ function App() {
     <div>
       <header className=" sticky top-0 p-8 flex justify-between items-center h-16">
         <Link to="/">
-          <Button name={"Home Page"}>{/* <AiFillHome /> */}</Button>
+          <Button name={"Home Page"}></Button>
         </Link>
         <div className="w-2/3 flex justify-end">
           {isAuthenticated && !isLoading ? (
