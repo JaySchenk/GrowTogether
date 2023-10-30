@@ -1,34 +1,32 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { SessionContext } from '../contexts/SessionContext';
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { SessionContext } from "../contexts/SessionContext";
+import Button from "./Button";
 
 const LoggedInNavbar = () => {
   const { setIsAuthenticated } = useContext(SessionContext);
   const navigate = useNavigate();
 
   function handleClick() {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem("authToken");
     setIsAuthenticated(false);
-    navigate('/login');
+    navigate("/login");
   }
 
   return (
     <div className="flex">
-      <button
-        onClick={handleClick}
-        className=" hover:underline"
-      >
-        Log Out
-      </button>
-      <Link to="/uplant" className="ml-6 hover:underline">
-        User Plants
+      <Button name={"Log Out"} onClick={handleClick}></Button>
+      <Link to="/uplant">
+        <Button name={"User Plants"}></Button>
       </Link>
-      <Link to="/uprofile" className="ml-6 hover:underline">
-        User Profile
+      <Link to="/uprofile">
+        <Button name={"User Profile"}></Button>
+      </Link>
+      <Link to="/createplant">
+        <Button name={"Create Plant"}></Button>
       </Link>
     </div>
   );
 };
 
 export default LoggedInNavbar;
-
