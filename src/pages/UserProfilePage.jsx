@@ -1,4 +1,5 @@
 import NavbarMobile from "../components/NavbarMobile";
+import UpdatePlant from "../components/UpdatePlant";
 
 const UserProfilePage = () => {
   return (
