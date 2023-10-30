@@ -13,7 +13,7 @@ import { useContext, useEffect } from "react";
 import LoggedInNavbar from "./components/LoggedInNavbar";
 import LoggedOutNavbar from "./components/LoggedOutNavbar";
 import Button from "./components/Button";
-import { AiFillHome } from "react-icons/ai";
+// import { AiFillHome } from "react-icons/ai";
 
 function App() {
   const { isAuthenticated, isLoading } = useContext(SessionContext);
@@ -24,7 +24,7 @@ function App() {
       <header className=" sticky top-0 p-8 flex justify-between items-center h-16">
         <Link to="/">
           <Button name={"Home Page"}>
-            <AiFillHome />
+            {/* <AiFillHome /> */}
           </Button>
         </Link>
         <div className="w-2/3 flex justify-end">
