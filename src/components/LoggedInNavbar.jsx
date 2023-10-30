@@ -9,6 +9,7 @@ const LoggedInNavbar = () => {
 
   function handleClick() {
     localStorage.removeItem("authToken");
+    console.log("pressed")
     setIsAuthenticated(false);
     navigate("/login");
   }

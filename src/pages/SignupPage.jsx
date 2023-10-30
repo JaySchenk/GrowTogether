@@ -15,7 +15,7 @@ const SignupPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/uprofile");
+      navigate("/uplant");
     }
   }, [isAuthenticated, navigate]);
 

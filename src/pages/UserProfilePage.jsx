@@ -145,11 +145,11 @@ const UserProfilePage = () => {
         <p className="-mb-1">Phone number</p>
         <input
           type="text"
-          value={user.telephone?user.telephone:"Phone Number"}
+          value={user.telephone}
           onChange={(event) =>
             setUser({ ...user, telephone: event.target.value })
           }
-          placeholder={user.telephone}
+          placeholder={user.telephone?user.telephone:"Phone Number"}
           className="p-2 w-full border rounded-lg"
         />
       </div>
