@@ -979,11 +979,6 @@ button:focus-visible {
   color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
-.text-red-300{
-  --tw-text-opacity: 1;
-  color: rgb(252 165 165 / var(--tw-text-opacity));
-}
-
 .text-red-500{
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
@@ -1007,16 +1002,6 @@ button:focus-visible {
 .text-red-600{
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
-}
-
-.text-red-900{
-  --tw-text-opacity: 1;
-  color: rgb(127 29 29 / var(--tw-text-opacity));
-}
-
-.text-red-700{
-  --tw-text-opacity: 1;
-  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
 .shadow-\[rgba\(30\2c 30\2c 15\2c 0\.5\)_0px_4px_14px_0px\]{
