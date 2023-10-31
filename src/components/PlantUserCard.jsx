@@ -88,19 +88,19 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
   return (
     <div className="plant-card w-11/12 md:w-1/2 max-w-2xl duration-300">
       <div className="plant-info -ml-9">
-          {plant.plantPicture ? (
-            <img
-              className="rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300"
-              src={plant.plantPicture}
-              alt={plant.plantSpecies}
-            />
-          ) : (
-            <img
-              className="rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300"
-              src="https://ih1.redbubble.net/image.949338818.5434/aps,504x498,large,transparent-pad,600x600,f8f8f8.jpg"
-              alt={plant.plantSpecies}
-            />
-          )}
+        {plant.plantPicture ? (
+          <img
+            className="rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300"
+            src={plant.plantPicture}
+            alt={plant.plantSpecies}
+          />
+        ) : (
+          <img
+            className="rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300"
+            src="https://ih1.redbubble.net/image.949338818.5434/aps,504x498,large,transparent-pad,600x600,f8f8f8.jpg"
+            alt={plant.plantSpecies}
+          />
+        )}
         <div className="text-left ml-4">
           <p className="font-semibold text-lg capitalize text-sky-900">
             {plant.plantName}
@@ -108,8 +108,25 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
           <p className="font-medium text-base text-gray-600">
             {currentPlant?.species}
           </p>
-          <p className="font-normal text-sm text-gray-600"> {plant.plantCutting>0?"Plant cuttings available: "+plant.plantCutting:""}</p>
-          <p className="font-normal text-sm text-gray-600"> {plant.plantSize!==""?"Plant size: "+plant.plantSize:""}</p>
+          <p className="font-normal text-sm text-gray-600">
+            {" "}
+            {plant.plantCutting > 0
+              ? "Plant cuttings available: " + plant.plantCutting
+              : ""}
+          </p>
+          <p className="font-normal text-sm text-gray-600">
+            {" "}
+            {plant.plantSize !== "" ? "Plant size: " + plant.plantSize : ""}
+          </p>
+          {needWater ? (
+            <p className="font-normal text-base text-red-600">
+              {plant.plantName} needs water
+            </p>
+          ) : (
+            <p className="font-normal text-sm text-emerald-600">
+              {plant.plantName} doesn't need water
+            </p>
+          )}
           <Link to={`/updateplant/${plant._id}`}>
             <button className="bg-emerald-600 text-white p-2 sm:p-3 px-3 sm:px-5 rounded-full self-center mt-2 sm:mt-2">
               Edit
@@ -117,7 +134,7 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
           </Link>
           <button
             onClick={handleDelete}
-            className='bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-2 ml-4 sm:ml-4'
+            className="bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-2 ml-4 sm:ml-4"
           >
             Delete
           </button>
