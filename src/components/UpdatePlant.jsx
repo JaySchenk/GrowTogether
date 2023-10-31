@@ -42,6 +42,7 @@ const UpdatePlant = ({ plantId }) => {
       );
 
       if (response.ok) {
+        handleGoBack()
         console.log("Plant updated successfully");
       } else {
         console.error("Failed to update plant");
@@ -88,6 +89,7 @@ const UpdatePlant = ({ plantId }) => {
       <h1 className='text-xl font-bold text-center'>Update plant</h1>
       {plantName ? (
         <form className='flex flex-col gap-4 mt-8' onSubmit={handleSubmit}>
+          <p className='-mb-1'>Plant name</p>
           <input
             type='text'
             value={plantName}
@@ -96,6 +98,7 @@ const UpdatePlant = ({ plantId }) => {
             placeholder='Plant name'
             className='p-2 border rounded-lg'
           />
+          <p className='-mb-1'>Species</p>
           <select
             value={plantSpecies}
             onChange={(event) => setPlantSpecies(event.target.value)}
@@ -115,6 +118,7 @@ const UpdatePlant = ({ plantId }) => {
             placeholder='Plant picture'
             className='p-2 border rounded-lg'
           />
+          <p className='-mb-1'>Plant cuttings available</p>
           <input
             type='number'
             value={plantCutting}
@@ -123,6 +127,7 @@ const UpdatePlant = ({ plantId }) => {
             placeholder='Plant cuttings available'
             className='p-2 border rounded-lg'
           />
+          <p className='-mb-1'>Plant size</p>
           <input
             type='text'
             value={plantSize}
@@ -141,13 +146,13 @@ const UpdatePlant = ({ plantId }) => {
             />
             I want to receive plant care reminders
           </label>
-          <button
-            type='submit'
-            onClick={handleGoBack}
-            className='bg-emerald-600 text-white p-2 rounded-lg self-center mt-4'
-          >
-            Update Plant
-          </button>
+            <button
+              type='submit'
+              onClick={handleSubmit}
+              className='bg-emerald-600 text-white p-2 rounded-lg self-center mt-4'
+            >
+              Update Plant
+            </button>
         </form>
       ) : (
         <p>Loading...</p>

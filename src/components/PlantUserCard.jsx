@@ -75,14 +75,16 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
           <p className='font-medium text-base text-gray-600'>
             {currentPlant?.species}
           </p>
+          <p className="font-normal text-sm text-gray-600"> {plant.plantCutting>0?"Plant cuttings available: "+plant.plantCutting:""}</p>
+          <p className="font-normal text-sm text-gray-600"> {plant.plantSize!==""?"Plant size: "+plant.plantSize:""}</p>
           <Link to={`/updateplant/${plant._id}`}>
-            <button className='bg-emerald-600 text-white p-2 sm:p-3 px-3 sm:px-5 rounded-full self-center mt-4 sm:mt-10'>
+            <button className='bg-emerald-600 text-white p-2 sm:p-3 px-3 sm:px-5 rounded-full self-center mt-2 sm:mt-2'>
               Edit
             </button>
           </Link>
           <button
             onClick={handleDelete}
-            className='bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-10 ml-4 sm:ml-4'
+            className='bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-2 ml-4 sm:ml-4'
           >
             Delete
           </button>
