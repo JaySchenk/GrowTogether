@@ -292,7 +292,7 @@ const NewUserPlant = ({ type, plantId }) => {
             </label>
             <button
               type="submit"
-              onClick={handleGoBack}
+              onClick={plantName&&plantSpecies?handleGoBack:""}
               className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4 "
             >
               {isPost ? "Make Plant" : "Save Changes"}

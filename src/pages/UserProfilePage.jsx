@@ -75,9 +75,9 @@ const UserProfilePage = () => {
 
   return (
     <div className='flex items-center flex-col justify-center'>
-      <div className='flex flex-col justify-center gap-4 mt-10'>
+      <div className='flex flex-col justify-center gap-4 mt-10 w-1/4'>
         {user.profilePicture ? (
-          <div>
+          <div className="flex flex-col items-center">
             <img
               alt='not found'
               width={"150px"}
@@ -95,9 +95,9 @@ const UserProfilePage = () => {
             </button>
           </div>
         ) : (
-          <>
+          <div className="flex flex-col items-center">
             <img
-              className='h-12 w-12 rounded mt-10'
+              className='h-20 w-20 rounded mt-10 mb-4'
               src={Avatar}
               alt='Default avatar'
             />
@@ -111,10 +111,9 @@ const UserProfilePage = () => {
                 setUser({ ...user, profilePicture: event.target.files[0] });
               }}
             />
-          </>
+          </div>
         )}
 
-        <p className='-mb-1'>Profile Picture</p>
 
         <p className='-mb-1'>Name</p>
         <input
