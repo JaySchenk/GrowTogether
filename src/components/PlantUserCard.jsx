@@ -23,7 +23,9 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
 
       if (waterFrequency) {
         const frequencyDays = parseInt(waterFrequency.split(" ")[0]);
-        const lastCareDate = new Date(plant.careActivityDate[0].dateOfCare);
+        const lastCareDate = new Date(
+          plant.careActivityDate[plant.careActivityDate.length - 1].dateOfCare
+        );
         const currentDate = new Date();
         const timeDifference = currentDate.getTime() - lastCareDate.getTime();
         const daysDifference = Math.floor(
