@@ -23,7 +23,7 @@ const UserProfilePage = () => {
   });
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/uplant");
   };
 
   const fetchUsers = () => {

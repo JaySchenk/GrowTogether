@@ -6,7 +6,7 @@ const LoginPage = () => {
   const { isAuthenticated, handleLogin } = useContext(SessionContext);
   const navigate = useNavigate();
 
-  isAuthenticated && navigate('/uprofile');
+  isAuthenticated && navigate('/uplant');
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,7 +34,7 @@ const LoginPage = () => {
       if (response.status === 200) {
         const parsed = await response.json();
         handleLogin(parsed.token);
-        navigate('/uprofile');
+        navigate('/uplant');
       }
     } catch (error) {
       console.log(error);
