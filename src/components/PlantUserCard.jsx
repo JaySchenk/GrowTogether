@@ -55,19 +55,19 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
   return (
     <div className='plant-card w-11/12 md:w-1/2 max-w-2xl duration-300'>
       <div className='plant-info -ml-9'>
-        {plant.plantPicture ? (
-          <img
-            className='rounded-full sm:rounded-2xl h-1/5 duration-300'
-            src={plant.plantPicture}
-            alt={plant.plantSpecies}
-          />
-        ) : (
-          <img
-            className='rounded-full sm:rounded-2xl h-28 lg:h-36 duration-300'
-            src='https://ih1.redbubble.net/image.949338818.5434/aps,504x498,large,transparent-pad,600x600,f8f8f8.jpg'
-            alt={plant.plantSpecies}
-          />
-        )}
+          {plant.plantPicture ? (
+            <img
+              className='rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300'
+              src={plant.plantPicture}
+              alt={plant.plantSpecies}
+            />
+          ) : (
+            <img
+              className='rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300'
+              src='https://ih1.redbubble.net/image.949338818.5434/aps,504x498,large,transparent-pad,600x600,f8f8f8.jpg'
+              alt={plant.plantSpecies}
+            />
+          )}
         <div className='text-left ml-4'>
           <p className='font-semibold text-lg capitalize text-sky-900'>
             {plant.plantName}
@@ -75,9 +75,11 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
           <p className='font-medium text-base text-gray-600'>
             {currentPlant?.species}
           </p>
-          <button className='bg-emerald-600 text-white p-2 sm:p-3 px-3 sm:px-5 rounded-full self-center mt-4 sm:mt-10'>
-            Edit
-          </button>
+          <Link to={`/updateplant/${plant._id}`}>
+            <button className='bg-emerald-600 text-white p-2 sm:p-3 px-3 sm:px-5 rounded-full self-center mt-4 sm:mt-10'>
+              Edit
+            </button>
+          </Link>
           <button
             onClick={handleDelete}
             className='bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-10 ml-4 sm:ml-4'

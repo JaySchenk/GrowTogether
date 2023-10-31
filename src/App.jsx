@@ -13,6 +13,7 @@ import { useContext, useEffect } from "react";
 import LoggedInNavbar from "./components/LoggedInNavbar";
 import LoggedOutNavbar from "./components/LoggedOutNavbar";
 import Button from "./components/Button";
+import UpdatePlantPage from "./pages/UpdatePlantPage";
 // import { AiFillHome } from "react-icons/ai";
 
 function App() {
@@ -61,6 +62,14 @@ function App() {
           element={
             <PrivateRoute>
               <CreatePlant />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          path='/updateplant/:plantId'
+          element={
+            <PrivateRoute>
+              <UpdatePlantPage />
             </PrivateRoute>
           }
         />

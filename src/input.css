@@ -71,11 +71,6 @@ button:focus-visible {
   justify-content: flex-end; 
 }
 
-.plant-card img {
-  /* height: 9em; */
-  /* margin-bottom: 2em; */
-}
-
 .plant-library{
   display: flex;
   flex-direction: column;

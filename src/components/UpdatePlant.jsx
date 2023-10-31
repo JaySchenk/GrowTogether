@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
+import { useNavigate } from "react-router-dom";
 
 const UpdatePlant = ({ plantId }) => {
+  const navigate = useNavigate();
   const [plants, setPlants] = useState([]);
   const [plantName, setPlantName] = useState();
   const [plantSpecies, setPlantSpecies] = useState("");
@@ -12,6 +14,10 @@ const UpdatePlant = ({ plantId }) => {
   const [activity, setActivity] = useState([]);
   const [reminderSettings, setReminderSettings] = useState(true);
   const { userId } = useContext(SessionContext);
+
+  const handleGoBack = () => {
+    navigate("/uplant");
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -137,6 +143,7 @@ const UpdatePlant = ({ plantId }) => {
           </label>
           <button
             type='submit'
+            onClick={handleGoBack}
             className='bg-emerald-600 text-white p-2 rounded-lg self-center mt-4'
           >
             Update Plant
