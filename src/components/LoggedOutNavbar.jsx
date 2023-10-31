@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 
-const LoggedInNavbar = () => {
+const LoggedOutNavbar = () => {
   return (
     <div className='flex'>
       <Link to='/signup' className='hover:underline'>
@@ -18,4 +18,4 @@ const LoggedInNavbar = () => {
   );
 };
 
-export default LoggedInNavbar;
+export default LoggedOutNavbar;

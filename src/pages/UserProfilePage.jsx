@@ -3,12 +3,13 @@ import NavbarMobile from "../components/NavbarMobile";
 import { SessionContext } from "../contexts/SessionContext";
 import Avatar from "/avatar.png";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const UserProfilePage = () => {
   const navigate = useNavigate();
-  const { userId } = useContext(SessionContext);
+  const { userId, setIsAuthenticated } = useContext(SessionContext);
 
   const [user, setUser] = useState({
     name: "",
@@ -73,14 +74,21 @@ const UserProfilePage = () => {
       });
   };
 
+  function handleLogOutClick() {
+    localStorage.removeItem("authToken");
+    console.log("pressed");
+    setIsAuthenticated(false);
+    navigate("/login");
+  }
   return (
     <div className='flex items-center flex-col justify-center'>
-      <div className='flex flex-col justify-center gap-4 mt-10 w-1/4'>
+      <div className='flex flex-col justify-center gap-4 mt-10 m-2 mb-20'>
         {user.profilePicture ? (
-          <div className="flex flex-col items-center">
+          <>
             <img
               alt='not found'
-              width={"150px"}
+              className='rounded-full self-center max-w-xs'
+              style={{ width: "50%", maxWidth: "300px" }}
               src={
                 user.profilePicture.path ||
                 URL.createObjectURL(user.profilePicture)
@@ -93,11 +101,11 @@ const UserProfilePage = () => {
             >
               Remove
             </button>
-          </div>
+          </>
         ) : (
-          <div className="flex flex-col items-center">
+          <>
             <img
-              className='h-20 w-20 rounded mt-10 mb-4'
+              className='h-20 w-20 rounded mt-10 self-center'
               src={Avatar}
               alt='Default avatar'
             />
@@ -111,9 +119,8 @@ const UserProfilePage = () => {
                 setUser({ ...user, profilePicture: event.target.files[0] });
               }}
             />
-          </div>
+          </>
         )}
-
 
         <p className='-mb-1'>Name</p>
         <input
@@ -186,13 +193,10 @@ const UserProfilePage = () => {
           placeholder={user.telephone ? user.telephone : "Phone Number"}
           className='p-2 w-full border rounded-lg'
         />
+        <Button onClick={handleUpdateUser} name={"Submit"} />
+        <Button name={"Log Out"} onClick={handleLogOutClick}></Button>
       </div>
-      <button
-        className='bg-emerald-600 text-white p-3 rounded-full self-center mt-4'
-        onClick={handleUpdateUser}
-      >
-        Submit
-      </button>
+
       <NavbarMobile />
     </div>
   );

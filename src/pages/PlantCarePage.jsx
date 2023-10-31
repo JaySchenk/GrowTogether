@@ -26,17 +26,17 @@ const PlantCarePage = ({ match }) => {
   }, [plantCareId]);
 
   return (
-    <div>
+    <>
       {plant ? (
-        <div>
-          <div className="plant-overview">
+        <div className='mb-14'>
+          <div className='plant-overview max-sm:flex-col-reverse '>
             {/* <BackButton />  */}
             <div>
-              <p className="font-medium text-4xl  text-sky-950">
+              <p className='font-medium text-4xl  text-sky-950'>
                 {plant.species}
               </p>
               <div></div>
-              <img src={Light} alt="" />
+              <img src={Light} alt='' />
               <p>LIGHT</p>
               <p>35-40%</p>
               <p>Temperature: {plant.care_instructions.temperature}</p>
@@ -65,12 +65,12 @@ const PlantCarePage = ({ match }) => {
             Difficulty Care Level:{" "}
             {plant.care_instructions.difficulty_care_level}
           </p>
-          <NavbarMobile />
         </div>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+      <NavbarMobile />
+    </>
   );
 };
 

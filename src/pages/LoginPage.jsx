@@ -1,16 +1,17 @@
-import { useContext, useState } from 'react';
-import { SessionContext } from '../contexts/SessionContext';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from "react";
+import { SessionContext } from "../contexts/SessionContext";
+import { useNavigate } from "react-router-dom";
+import NavbarMobile from "../components/NavbarMobile";
 
 const LoginPage = () => {
   const { isAuthenticated, handleLogin } = useContext(SessionContext);
   const navigate = useNavigate();
 
-  isAuthenticated && navigate('/uplant');
+  isAuthenticated && navigate("/uplant");
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,9 +21,9 @@ const LoginPage = () => {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/auth/login`,
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(payload),
         }
@@ -34,7 +35,7 @@ const LoginPage = () => {
       if (response.status === 200) {
         const parsed = await response.json();
         handleLogin(parsed.token);
-        navigate('/uplant');
+        navigate("/uplant");
       }
     } catch (error) {
       console.log(error);
@@ -43,36 +44,36 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="m-auto max-w-md flex flex-col justify-center h-[calc(100vh-100px)]">
-      <h1 className="text-xl font-bold text-center">Login</h1>
-      <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
+    <div className='m-auto max-w-md flex flex-col justify-center h-[calc(100vh-100px)]'>
+      <h1 className='text-xl font-bold text-center'>Login</h1>
+      <form className='flex flex-col gap-4 mt-8' onSubmit={handleSubmit}>
         <input
-          type="email"
+          type='email'
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           required
-          placeholder="Email"
-          className="p-2 border rounded-lg"
+          placeholder='Email'
+          className='p-2 border rounded-lg'
         />
         <input
-          type="password"
+          type='password'
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           required
-          placeholder="Password"
-          className="p-2 border rounded-lg"
+          placeholder='Password'
+          className='p-2 border rounded-lg'
         />
         <button
-          type="submit"
-          className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4"
+          type='submit'
+          className='bg-emerald-600 text-white p-3 rounded-full self-center mt-4'
         >
           Connect
         </button>
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+        {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
       </form>
+      <NavbarMobile />
     </div>
   );
 };
 
 export default LoginPage;
-

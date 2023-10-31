@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div>
-      <header className=' sticky top-0 p-8 flex justify-between items-center h-16'>
+      <header className=' sticky top-0 p-8 flex justify-between items-center h-16 max-sm:hidden'>
         <Link to='/'>
           <Button name={"Home Page"}></Button>
         </Link>
@@ -65,7 +65,7 @@ function App() {
             </PrivateRoute>
           }
         />
-         <Route
+        <Route
           path='/updateplant/:plantId'
           element={
             <PrivateRoute>
