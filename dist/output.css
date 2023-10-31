@@ -1023,6 +1023,11 @@ button:focus-visible {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-red-600{
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
 .shadow-\[rgba\(30\2c 30\2c 15\2c 0\.5\)_0px_4px_14px_0px\]{
   --tw-shadow: rgba(30,30,15,0.5) 0px 4px 14px 0px;
   --tw-shadow-colored: 0px 4px 14px 0px var(--tw-shadow-color);
