@@ -33,12 +33,12 @@ const PlantCarePage = ({ match }) => {
       {plant ? (
         <div className='mb-14'>
             <BackButton /> 
-          <div className='plant-overview'>
-            <div className="w-3/5">
-              <p className='font-medium text-4xl  text-sky-950'>
+          <div className='plant-overview items-stretch sm:items-end sm:-mt-20'>
+            <div className="w-3/5 md:w-1/3 md:ml-28">
+              <p className='font-medium text-4xl lg:text-6xl md:text-5xl md:leading-tight text-sky-950 md:ml-14'>
                 {plant.species}
               </p>
-              <div className="flex flex-wrap mt-6 mb-12 ml-6">
+              <div className="flex flex-wrap mt-10 mb-12 ml-6 sm:mt-20">
                 <div className="w-1/2 flex flex-col items-center gap-2 -ml-6">
                   <img src={Light} className="w-8" />
                   <p className="text-xs">LIGHT</p>
@@ -61,9 +61,9 @@ const PlantCarePage = ({ match }) => {
                 </div>
               </div>
             </div>
-            <img src={plant.image} alt={plant.species} className="w-2/5 object-cover"/>
+            <img src={plant.image} alt={plant.species} className="w-2/5 max-h-96 object-none object-top "/>
           </div>
-          <div className="p-8">
+          <div className="p-8 md:px-64">
             <p className="font-medium text-lg mt-2">Pot Size: </p>
             <span>{plant.care_instructions.pot_size}</span>
             <p className="font-medium text-lg mt-2">
