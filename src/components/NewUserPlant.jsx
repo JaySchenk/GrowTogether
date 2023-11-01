@@ -23,6 +23,39 @@ const NewUserPlant = ({ type, plantId }) => {
 
   const navigate = useNavigate();
 
+  function dropHandler(ev) {
+    console.log("File(s) dropped");
+
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+    setPlantPicture(null)
+    
+    if (ev.dataTransfer.items) {
+      // Use DataTransferItemList interface to access the file(s)
+      [...ev.dataTransfer.items].forEach((item, i) => {
+        // If dropped items aren't files, reject them
+        if (item.kind === "file") {
+          const file = item.getAsFile();
+          console.log(`… file[${i}].name = ${file.name}`);
+          setPlantPicture(file)
+        }
+      });
+    } else {
+      // Use DataTransfer interface to access the file(s)
+      [...ev.dataTransfer.files].forEach((file, i) => {
+        console.log(`… file[${i}].name = ${file.name}`);
+        setPlantPicture(file);
+      });
+    }
+  }
+
+  function dragOverHandler(ev) {
+    console.log("File(s) in drop zone");
+
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -172,7 +205,12 @@ const NewUserPlant = ({ type, plantId }) => {
                     </option>
                   ))}
                 </select>
-                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                <div
+                  className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                  id="drop_zone"
+                  onDrop={(ev) => dropHandler(ev)}
+                  onDragOver={(ev) => dragOverHandler(ev)}
+                >
                   <div className="text-center">
                     {plantPicture ? (
                       <div>
