@@ -10,7 +10,9 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
   const [plants, setPlants] = useState([]);
   const [needWater, setNeedWater] = useState(false);
   const { userId } = useContext(SessionContext);
+  const [daysDifference, setDaysDifference] = useState();
   const [showNewUserPlant, setShowNewUserPlant] = useState(false);
+  const [daysUntilWater, setDaysUntilWater] = useState();
 
   const checkWateringStatus = () => {
     if (
@@ -31,9 +33,13 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
         const daysDifference = Math.floor(
           timeDifference / (1000 * 60 * 60 * 24)
         );
+        setDaysDifference(daysDifference);
 
         if (daysDifference > frequencyDays) {
           setNeedWater(true);
+        } else {
+          const daysUntilWater = frequencyDays - daysDifference;
+          setDaysUntilWater(daysUntilWater);
         }
       }
     }
@@ -122,11 +128,12 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
           </p>
           {needWater ? (
             <p className="font-normal text-base text-red-600">
-              {plant.plantName} needs water
+              {plant.plantName} needs water, thirsty for {daysDifference} days.
             </p>
           ) : (
             <p className="font-normal text-sm text-emerald-600">
-              {plant.plantName} doesn't need water
+              {plant.plantName} doesn't need water, water in {daysUntilWater}{" "}
+              days.
             </p>
           )}
           <Link to={`/updateplant/${plant._id}`}>

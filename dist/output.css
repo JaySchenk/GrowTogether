@@ -646,16 +646,12 @@ button:focus-visible {
   top: 0px;
 }
 
-.m-auto{
-  margin: auto;
-}
-
-.m-10{
-  margin: 2.5rem;
-}
-
 .m-2{
   margin: 0.5rem;
+}
+
+.m-auto{
+  margin: auto;
 }
 
 .mx-auto{
@@ -671,8 +667,20 @@ button:focus-visible {
   margin-left: -2.25rem;
 }
 
+.mb-10{
+  margin-bottom: 2.5rem;
+}
+
+.mb-14{
+  margin-bottom: 3.5rem;
+}
+
 .mb-2{
   margin-bottom: 0.5rem;
+}
+
+.mb-20{
+  margin-bottom: 5rem;
 }
 
 .mb-4{
@@ -707,26 +715,6 @@ button:focus-visible {
   margin-top: 2rem;
 }
 
-.mb-10{
-  margin-bottom: 2.5rem;
-}
-
-.mb-20{
-  margin-bottom: 5rem;
-}
-
-.mb-12{
-  margin-bottom: 3rem;
-}
-
-.mb-14{
-  margin-bottom: 3.5rem;
-}
-
-.mt-14{
-  margin-top: 3.5rem;
-}
-
 .block{
   display: block;
 }
@@ -759,16 +747,8 @@ button:focus-visible {
   height: calc(100vh - 100px);
 }
 
-.h-screen{
-  height: 100vh;
-}
-
 .max-h-32{
   max-height: 8rem;
-}
-
-.w-1\/4{
-  width: 25%;
 }
 
 .w-11\/12{
@@ -825,10 +805,6 @@ button:focus-visible {
 
 .flex-col{
   flex-direction: column;
-}
-
-.flex-col-reverse{
-  flex-direction: column-reverse;
 }
 
 .items-center{
@@ -918,11 +894,6 @@ button:focus-visible {
 .px-3{
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-}
-
-.px-4{
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .px-6{
@@ -1130,14 +1101,6 @@ button:focus-visible {
     height: 100vh;
   }
 
-  .sm\:flex-col{
-    flex-direction: column;
-  }
-
-  .sm\:flex-col-reverse{
-    flex-direction: column-reverse;
-  }
-
   .sm\:rounded-2xl{
     border-radius: 1rem;
   }
@@ -1165,10 +1128,6 @@ button:focus-visible {
 @media (max-width: 639px){
   .max-sm\:hidden{
     display: none;
-  }
-
-  .max-sm\:h-screen{
-    height: 100vh;
   }
 
   .max-sm\:flex-col-reverse{
