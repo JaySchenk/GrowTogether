@@ -26,22 +26,19 @@ const NewUserPlant = ({ type, plantId }) => {
   /////drag&drop///
   function dropHandler(ev) {
     console.log("File(s) dropped");
-    document.querySelector('.drag').classList.remove('dragndrop')
+    document.querySelector(".drag").classList.remove("dragndrop");
     ev.preventDefault();
-    setPlantPicture(null)
+    setPlantPicture(null);
 
     if (ev.dataTransfer.items) {
-
       [...ev.dataTransfer.items].forEach((item, i) => {
-
         if (item.kind === "file") {
           const file = item.getAsFile();
           console.log(`… file[${i}].name = ${file.name}`);
-          setPlantPicture(file)
+          setPlantPicture(file);
         }
       });
     } else {
-
       [...ev.dataTransfer.files].forEach((file, i) => {
         console.log(`… file[${i}].name = ${file.name}`);
         setPlantPicture(file);
@@ -51,7 +48,7 @@ const NewUserPlant = ({ type, plantId }) => {
 
   function dragOverHandler(ev) {
     console.log("File(s) in drop zone");
-    document.querySelector('.drag').classList.add('dragndrop');
+    document.querySelector(".drag").classList.add("dragndrop");
     ev.preventDefault();
   }
   ////////
@@ -68,6 +65,7 @@ const NewUserPlant = ({ type, plantId }) => {
     if (isSubmitting) {
       return;
     }
+
     setIsSubmitting(true);
 
     const payload = {
@@ -117,8 +115,8 @@ const NewUserPlant = ({ type, plantId }) => {
           const newUserPlantId = parsed.UserPlant._id;
 
           const payload = { plants: newUserPlantId };
-          setIsSubmitting(false);
-          handleGoBack();
+
+          setTimeout(handleGoBack(), 2000);
           const updateResponse = await fetch(
             `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
             {
