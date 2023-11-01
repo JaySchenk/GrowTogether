@@ -23,16 +23,15 @@ const NewUserPlant = ({ type, plantId }) => {
 
   const navigate = useNavigate();
 
-  const handleGoBack = () => {
-    setTimeout(() => {
-      if (!isSubmitting) {
-        navigate(-1);
-      }
-    }, 2000);
-  };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    const handleGoBack = () => {
+        if (!isSubmitting) {
+          navigate(-1);
+        }
+    };
 
     if (isSubmitting) {
       return;
@@ -87,6 +86,7 @@ const NewUserPlant = ({ type, plantId }) => {
 
           const payload = { plants: newUserPlantId };
           setIsSubmitting(false);
+          handleGoBack()
           const updateResponse = await fetch(
             `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
             {
@@ -292,7 +292,7 @@ const NewUserPlant = ({ type, plantId }) => {
             </label>
             <button
               type="submit"
-              onClick={plantName && plantSpecies ? handleGoBack : undefined}
+              // onClick={plantName && plantSpecies ? handleGoBack : undefined}
               className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4 "
             >
               {isPost ? "Make Plant" : "Save Changes"}
