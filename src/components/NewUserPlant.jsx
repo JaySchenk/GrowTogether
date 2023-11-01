@@ -116,7 +116,7 @@ const NewUserPlant = ({ type, plantId }) => {
 
           const payload = { plants: newUserPlantId };
 
-          setTimeout(handleGoBack(), 3500);
+          setTimeout(handleGoBack, 3000);
           const updateResponse = await fetch(
             `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
             {
