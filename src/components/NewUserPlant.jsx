@@ -23,17 +23,17 @@ const NewUserPlant = ({ type, plantId }) => {
 
   const navigate = useNavigate();
 
+  /////drag&drop///
   function dropHandler(ev) {
     console.log("File(s) dropped");
-
-    // Prevent default behavior (Prevent file from being opened)
+    document.querySelector('.drag').classList.remove('dragndrop')
     ev.preventDefault();
     setPlantPicture(null)
-    
+
     if (ev.dataTransfer.items) {
-      // Use DataTransferItemList interface to access the file(s)
+
       [...ev.dataTransfer.items].forEach((item, i) => {
-        // If dropped items aren't files, reject them
+
         if (item.kind === "file") {
           const file = item.getAsFile();
           console.log(`… file[${i}].name = ${file.name}`);
@@ -41,7 +41,7 @@ const NewUserPlant = ({ type, plantId }) => {
         }
       });
     } else {
-      // Use DataTransfer interface to access the file(s)
+
       [...ev.dataTransfer.files].forEach((file, i) => {
         console.log(`… file[${i}].name = ${file.name}`);
         setPlantPicture(file);
@@ -51,10 +51,10 @@ const NewUserPlant = ({ type, plantId }) => {
 
   function dragOverHandler(ev) {
     console.log("File(s) in drop zone");
-
-    // Prevent default behavior (Prevent file from being opened)
+    document.querySelector('.drag').classList.add('dragndrop');
     ev.preventDefault();
   }
+  ////////
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -206,7 +206,7 @@ const NewUserPlant = ({ type, plantId }) => {
                   ))}
                 </select>
                 <div
-                  className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                  className=" drag mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
                   id="drop_zone"
                   onDrop={(ev) => dropHandler(ev)}
                   onDragOver={(ev) => dragOverHandler(ev)}
@@ -245,7 +245,7 @@ const NewUserPlant = ({ type, plantId }) => {
                     <div className="mt-4 flex text-sm leading-6 text-gray-600">
                       <label
                         htmlFor="image"
-                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                        className="relative cursor-pointer rounded-md font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                       >
                         <span className="text-emerald-600">Upload a file</span>
 

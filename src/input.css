@@ -89,6 +89,9 @@ button:focus-visible {
   filter:hue-rotate(270deg);
 }
 
+.dragndrop{
+background-color: #d1d5db;
+}
 
 
 
