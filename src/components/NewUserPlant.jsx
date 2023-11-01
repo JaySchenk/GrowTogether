@@ -23,14 +23,13 @@ const NewUserPlant = ({ type, plantId }) => {
 
   const navigate = useNavigate();
 
-  
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     const handleGoBack = () => {
-        if (!isSubmitting) {
-          navigate(-1);
-        }
+      if (!isSubmitting) {
+        navigate(-1);
+      }
     };
 
     if (isSubmitting) {
@@ -86,7 +85,7 @@ const NewUserPlant = ({ type, plantId }) => {
 
           const payload = { plants: newUserPlantId };
           setIsSubmitting(false);
-          handleGoBack()
+          handleGoBack();
           const updateResponse = await fetch(
             `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
             {
@@ -112,6 +111,7 @@ const NewUserPlant = ({ type, plantId }) => {
 
         if (updateResponse.ok) {
           console.log("Collection updated successfully");
+          window.location.reload();
         } else {
           console.error("Failed to update other collection");
         }
