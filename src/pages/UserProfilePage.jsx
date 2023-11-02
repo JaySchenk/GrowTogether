@@ -3,7 +3,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import { SessionContext } from "../contexts/SessionContext";
 import Avatar from "/avatar.png";
 import { useNavigate } from "react-router-dom";
-import Button from "../components/Button";
+import BackButton from "../components/BackButton";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -82,6 +82,7 @@ const UserProfilePage = () => {
   }
   return (
     <div className='flex items-center flex-col justify-center'>
+      <BackButton/> 
       <div className='flex flex-col justify-center gap-4 mt-10 m-2 mb-20'>
         {user.profilePicture ? (
           <>
@@ -193,8 +194,8 @@ const UserProfilePage = () => {
           placeholder={user.telephone ? user.telephone : "Phone Number"}
           className='p-2 w-full border rounded-lg'
         />
-        <Button onClick={handleUpdateUser} name={"Submit"} />
-        <Button name={"Log Out"} onClick={handleLogOutClick}></Button>
+        <button className='bg-emerald-600 text-white p-2 rounded-full self-center mt-4 w-2/5' onClick={handleUpdateUser} name={"Submit"}>Submit</button>
+        <button  className='hover:bg-sky-950 bg-sky-900 text-white p-2 rounded-full self-center mt-4 w-2/5' name={"Log Out"} onClick={handleLogOutClick}>Log Out</button>
       </div>
 
       <NavbarMobile />

@@ -85,7 +85,7 @@ const UpdatePlant = ({ plantId }) => {
   }, []);
 
   return (
-    <div className='m-auto max-w-md flex flex-col justify-center'>
+    <div className='m-auto max-w-md flex flex-col justify-center mt-20'>
       <h1 className='text-xl font-bold text-center'>Update plant</h1>
       {plantName ? (
         <form className='flex flex-col gap-4 mt-8' onSubmit={handleSubmit}>
@@ -111,13 +111,6 @@ const UpdatePlant = ({ plantId }) => {
               </option>
             ))}
           </select>
-          <input
-            type='text'
-            value={plantPicture}
-            onChange={(event) => setPlantPicture(event.target.value)}
-            placeholder='Plant picture'
-            className='p-2 border rounded-lg'
-          />
           <p className='-mb-1'>Plant cuttings available</p>
           <input
             type='number'
@@ -149,7 +142,7 @@ const UpdatePlant = ({ plantId }) => {
             <button
               type='submit'
               onClick={handleSubmit}
-              className='bg-emerald-600 text-white p-2 rounded-lg self-center mt-4'
+              className='bg-emerald-600 text-white p-2 rounded-full self-center mt-4'
             >
               Update Plant
             </button>

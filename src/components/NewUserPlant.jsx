@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { useNavigate } from "react-router-dom";
+import BackButton from "./BackButton";
 
 const NewUserPlant = ({ type, plantId }) => {
   const isPost = type === "newPlant";
@@ -167,7 +168,8 @@ const NewUserPlant = ({ type, plantId }) => {
   }, []);
 
   return (
-    <div className="m-auto max-w-md flex flex-col justify-center">
+    <div className="m-auto max-w-md flex flex-col justify-center mt-20">
+      <BackButton/> 
       {plants.length > 0 && (isPost || isPut) ? (
         <>
           <h1 className="text-xl font-bold text-center">
