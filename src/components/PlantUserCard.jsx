@@ -144,7 +144,7 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
             </Link>
             <button
               onClick={handleDelete}
-              className="bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-2 sm:ml-4"
+              className="bg-white text-red-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-2 sm:ml-4"
             >
               Delete
             </button>

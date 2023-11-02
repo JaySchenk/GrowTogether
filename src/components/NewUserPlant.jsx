@@ -186,7 +186,7 @@ const NewUserPlant = ({ type, plantId }) => {
               >
                 {isPost && (
                   <>
-                    <p className="-mb-1">
+                    <p className="-mb-1 font-medium">
                       Plant name <span className="text-red-500">*</span>
                     </p>
                     <input
@@ -197,7 +197,7 @@ const NewUserPlant = ({ type, plantId }) => {
                       placeholder="Plant name"
                       className="p-2 border rounded-lg"
                     />
-                    <p className="-mb-1">
+                    <p className="-mb-1 font-medium">
                       Species <span className="text-red-500">*</span>
                     </p>
                     <select
@@ -277,7 +277,7 @@ const NewUserPlant = ({ type, plantId }) => {
                         </p>
                       </div>
                     </div>
-                    <p className="-mb-1">Plant cuttings available</p>
+                    <p className="-mb-1 font-medium">Plant cuttings available</p>
                     <input
                       type="number"
                       value={plantCutting}
@@ -285,7 +285,7 @@ const NewUserPlant = ({ type, plantId }) => {
                       placeholder="Plant cuttings available"
                       className="p-2 border rounded-lg"
                     />
-                    <p className="-mb-1">Plant size</p>
+                    <p className="-mb-1 font-medium">Plant size</p>
                     <input
                       type="text"
                       value={plantSize}
@@ -342,7 +342,9 @@ const NewUserPlant = ({ type, plantId }) => {
                     }
                     className="mr-2"
                   />
+                  <p className="text-xs text-gray-500">
                   I want to receive plant care reminders
+                  </p>
                 </label>
                 <button
                   type="submit"

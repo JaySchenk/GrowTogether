@@ -12,7 +12,7 @@ import { SessionContext } from "./contexts/SessionContext";
 import { useContext, useEffect } from "react";
 import LoggedInNavbar from "./components/LoggedInNavbar";
 import LoggedOutNavbar from "./components/LoggedOutNavbar";
-import Button from "./components/Button";
+import Logo from "/logo.png"
 import UpdatePlantPage from "./pages/UpdatePlantPage";
 // import { AiFillHome } from "react-icons/ai";
 
@@ -24,7 +24,7 @@ function App() {
     <div>
       <header className=' sticky top-0 p-8 flex justify-between items-center h-16 max-sm:hidden'>
         <Link to='/'>
-          <Button name={"Home Page"}></Button>
+          <img src={Logo} alt="logo" className="w-40" />
         </Link>
         <div className='w-2/3 flex justify-end'>
           {isAuthenticated && !isLoading ? (

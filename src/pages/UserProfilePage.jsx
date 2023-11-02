@@ -123,7 +123,7 @@ const UserProfilePage = () => {
           </>
         )}
 
-        <p className='-mb-1'>Name</p>
+        <p className='-mb-1 font-medium'>Name</p>
         <input
           type='text'
           value={user.name}
@@ -131,7 +131,7 @@ const UserProfilePage = () => {
           placeholder={user.name ? user.name : "Name"}
           className='p-2  w-full border rounded-lg'
         />
-        <p className='-mb-1'>Surname</p>
+        <p className='-mb-1 font-medium'>Surname</p>
         <input
           type='text'
           value={user.surname}
@@ -141,7 +141,7 @@ const UserProfilePage = () => {
           placeholder={user.surname ? user.surname : "Surname"}
           className='p-2  w-full border rounded-lg'
         />
-        <p className='-mb-1'>Street, House number</p>
+        <p className='-mb-1 font-medium'>Street, House number</p>
         <input
           type='text'
           value={user.address.streetHouseNumb}
@@ -158,7 +158,7 @@ const UserProfilePage = () => {
           }
           className='p-2  w-full border rounded-lg'
         />
-        <p className='-mb-1'>City</p>
+        <p className='-mb-1 font-medium'>City</p>
         <input
           type='text'
           value={user.address.city}
@@ -171,7 +171,7 @@ const UserProfilePage = () => {
           placeholder={user.address.city ? user.address.city : "City"}
           className='p-2  w-full border rounded-lg'
         />
-        <p className='-mb-1'>Country</p>
+        <p className='-mb-1 font-medium'>Country</p>
         <input
           type='text'
           value={user.address.country}
@@ -184,7 +184,7 @@ const UserProfilePage = () => {
           placeholder={user.address.country ? user.address.country : "Country"}
           className='p-2  w-full border rounded-lg'
         />
-        <p className='-mb-1'>Phone number</p>
+        <p className='-mb-1 font-medium'>Phone number</p>
         <input
           type='text'
           value={user.telephone}

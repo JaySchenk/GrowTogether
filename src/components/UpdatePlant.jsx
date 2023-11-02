@@ -18,7 +18,7 @@ const UpdatePlant = ({ plantId }) => {
 
   const handleGoBack = () => {
     navigate("/uplant");
-    return(<Loader/>)
+    return <Loader />;
   };
 
   const handleSubmit = async (event) => {
@@ -44,7 +44,7 @@ const UpdatePlant = ({ plantId }) => {
       );
 
       if (response.ok) {
-        handleGoBack()
+        handleGoBack();
         console.log("Plant updated successfully");
       } else {
         console.error("Failed to update plant");
@@ -87,70 +87,72 @@ const UpdatePlant = ({ plantId }) => {
   }, []);
 
   return (
-    <div className='m-auto max-w-md flex flex-col justify-center mt-20'>
-      <h1 className='text-xl font-bold text-center'>Update plant</h1>
+    <div className="m-auto max-w-md flex flex-col justify-center mt-20">
+      <h1 className="text-xl font-bold text-center">Update plant</h1>
       {plantName ? (
-        <form className='flex flex-col gap-4 mt-8' onSubmit={handleSubmit}>
-          <p className='-mb-1'>Plant name</p>
+        <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
+          <p className="-mb-1 font-medium">Plant name</p>
           <input
-            type='text'
+            type="text"
             value={plantName}
             onChange={(event) => setPlantName(event.target.value)}
             required
-            placeholder='Plant name'
-            className='p-2 border rounded-lg'
+            placeholder="Plant name"
+            className="p-2 border rounded-lg"
           />
-          <p className='-mb-1'>Species</p>
+          <p className="-mb-1 font-medium">Species</p>
           <select
             value={plantSpecies}
             onChange={(event) => setPlantSpecies(event.target.value)}
-            className='p-2 border rounded-lg'
+            className="p-2 border rounded-lg"
           >
-            <option value=''>Pick value</option>
+            <option value="">Pick value</option>
             {plants.map((item) => (
               <option key={item._id} value={item._id}>
                 {item.species}
               </option>
             ))}
           </select>
-          <p className='-mb-1'>Plant cuttings available</p>
+          <p className="-mb-1 font-medium">Plant cuttings available</p>
           <input
-            type='number'
+            type="number"
             value={plantCutting}
             onChange={(event) => setPlantCutting(event.target.value)}
             required
-            placeholder='Plant cuttings available'
-            className='p-2 border rounded-lg'
+            placeholder="Plant cuttings available"
+            className="p-2 border rounded-lg"
           />
-          <p className='-mb-1'>Plant size</p>
+          <p className="-mb-1 font-medium">Plant size</p>
           <input
-            type='text'
+            type="text"
             value={plantSize}
             onChange={(event) => setPlantSize(event.target.value)}
             required
-            placeholder='Plant size'
-            className='p-2 border rounded-lg'
+            placeholder="Plant size"
+            className="p-2 border rounded-lg"
           />
 
-          <label className='flex items-center'>
+          <label className="flex items-center">
             <input
-              type='checkbox'
+              type="checkbox"
               defaultChecked
               onChange={(event) => setReminderSettings(event.target.checked)}
-              className='mr-2'
+              className="mr-2"
             />
-            I want to receive plant care reminders
+            <p className="text-xs text-gray-400">
+              I want to receive plant care reminders
+            </p>
           </label>
-            <button
-              type='submit'
-              onClick={handleSubmit}
-              className='bg-emerald-600 text-white p-2 rounded-full self-center mt-4'
-            >
-              Update Plant
-            </button>
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="bg-emerald-600 text-white p-2 rounded-full self-center mt-4"
+          >
+            Update Plant
+          </button>
         </form>
       ) : (
-        <Loader/>
+        <Loader />
       )}
     </div>
   );

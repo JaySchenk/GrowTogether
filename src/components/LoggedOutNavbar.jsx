@@ -12,7 +12,7 @@ const LoggedOutNavbar = () => {
       <button className='hover:bg-sky-700 bg-sky-600 text-white text-sm py-2 px-3 rounded-full m-2'>Log in</button>
       </Link>
       <Link to='/plantcare' className=' hover:underline '>
-        <Button name={"Plant Care Library"}></Button>
+        <Button name={"Library"}></Button>
       </Link>
     </div>
   );

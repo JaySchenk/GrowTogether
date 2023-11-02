@@ -703,7 +703,6 @@ button:hover {
 .container{
   height: 100vh;
   display: flex;
-  margin-bottom: 100px;
   align-items: center;
   align-content: center;
 }
@@ -799,6 +798,10 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+.mb-40{
+  margin-bottom: 10rem;
+}
+
 .ml-2{
   margin-left: 0.5rem;
 }
@@ -839,10 +842,6 @@ button:hover {
   margin-top: 2rem;
 }
 
-.mb-40{
-  margin-bottom: 10rem;
-}
-
 .block{
   display: block;
 }
@@ -873,6 +872,10 @@ button:hover {
 
 .h-\[calc\(100vh-100px\)\]{
   height: calc(100vh - 100px);
+}
+
+.h-full{
+  height: 100%;
 }
 
 .max-h-32{
@@ -921,6 +924,30 @@ button:hover {
 
 .w-full{
   width: 100%;
+}
+
+.w-10{
+  width: 2.5rem;
+}
+
+.w-40{
+  width: 10rem;
+}
+
+.w-44{
+  width: 11rem;
+}
+
+.w-64{
+  width: 16rem;
+}
+
+.w-56{
+  width: 14rem;
+}
+
+.w-52{
+  width: 13rem;
 }
 
 .max-w-2xl{
@@ -1086,6 +1113,14 @@ button:hover {
   padding-left: 2rem;
 }
 
+.pb-20{
+  padding-bottom: 5rem;
+}
+
+.pb-10{
+  padding-bottom: 2.5rem;
+}
+
 .text-left{
   text-align: left;
 }
@@ -1204,6 +1239,11 @@ button:hover {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-gray-500{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .shadow-\[rgba\(30\2c 30\2c 15\2c 0\.5\)_0px_4px_14px_0px\]{
