@@ -32,8 +32,8 @@ const PlantCarePage = ({ match }) => {
     <>
       {plant ? (
         <div className='mb-14'>
-            <BackButton /> 
-          <div className='plant-overview items-stretch sm:items-end sm:-mt-20 duration-300'>
+            <BackButton/> 
+          <div className='plant-overview items-stretch sm:items-end sm:-mt-20 duration-300 sm:px-4 pl-8'>
             <div className="w-3/5 md:w-1/3 md:ml-28">
               <p className='font-medium text-4xl lg:text-6xl md:text-5xl md:leading-tight text-sky-950 md:ml-14 duration-300'>
                 {plant.species}
@@ -61,7 +61,7 @@ const PlantCarePage = ({ match }) => {
                 </div>
               </div>
             </div>
-            <img src={plant.image} alt={plant.species} className="w-2/5 max-h-96 object-contain object-top duration-300"/>
+            <img src={plant.image} alt={plant.species} className="w-2/5 max-h-96 object-cover object-left duration-300"/>
           </div>
           <div className="p-8 md:px-64 duration-300">
             <p className="font-medium text-lg mt-2">Pot Size: </p>

@@ -615,7 +615,7 @@ button:focus-visible {
   display: flex;
   justify-content: space-evenly;
   padding-top: 100px;
-  padding: 100px 29px 0;
+  padding: 100px 0px 0;
   border-radius: 0 0 0 80px;
   /* align-items: flex-end; */
 }
@@ -938,24 +938,14 @@ button:hover {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.object-contain{
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
 .object-cover{
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.object-none{
-  -o-object-fit: none;
-     object-fit: none;
-}
-
-.object-top{
-  -o-object-position: top;
-     object-position: top;
+.object-left{
+  -o-object-position: left;
+     object-position: left;
 }
 
 .p-2{
@@ -997,6 +987,18 @@ button:hover {
 
 .pl-1{
   padding-left: 0.25rem;
+}
+
+.pl-4{
+  padding-left: 1rem;
+}
+
+.pl-6{
+  padding-left: 1.5rem;
+}
+
+.pl-8{
+  padding-left: 2rem;
 }
 
 .text-left{
@@ -1222,6 +1224,20 @@ button:hover {
   .sm\:px-5{
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  .sm\:px-2{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .sm\:px-4{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .sm\:pl-0{
+    padding-left: 0px;
   }
 }
 

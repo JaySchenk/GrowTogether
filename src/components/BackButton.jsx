@@ -9,7 +9,7 @@ const BackButton = () => {
   };
 
   return (
-    <button className="absolute top-6 left-4" onClick={handleGoBack}><ChevronLeftIcon className="w-8 text-sky-900"/></button>
+    <button className="absolute top-6 left-4 sm:hidden" onClick={handleGoBack}><ChevronLeftIcon className="w-8 text-sky-900"/></button>
   );
 };
 
