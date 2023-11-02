@@ -61,7 +61,7 @@ const PlantCarePage = ({ match }) => {
                 </div>
               </div>
             </div>
-            <img src={plant.image} alt={plant.species} className="w-2/5 max-h-96 object-cover object-left-bottom lg:rounded-full duration-300"/>
+            <img src={plant.image} alt={plant.species} className="w-2/5 object-cover object-left-bottom  max-h-[28rem] lg:rounded-full duration-300"/>
           </div>
           <div className="p-8 md:px-64 duration-300">
             <p className="font-medium text-lg mt-2">Pot Size: </p>

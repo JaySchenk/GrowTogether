@@ -790,6 +790,24 @@ button:hover {
   max-height: 24rem;
 }
 
+.max-h-max{
+  max-height: -moz-max-content;
+  max-height: max-content;
+}
+
+.max-h-min{
+  max-height: -moz-min-content;
+  max-height: min-content;
+}
+
+.max-h-\[32rem\]{
+  max-height: 32rem;
+}
+
+.max-h-\[28rem\]{
+  max-height: 28rem;
+}
+
 .w-1\/2{
   width: 50%;
 }
