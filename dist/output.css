@@ -948,6 +948,11 @@ button:hover {
      object-position: left;
 }
 
+.object-left-bottom{
+  -o-object-position: left bottom;
+     object-position: left bottom;
+}
+
 .p-2{
   padding: 0.5rem;
 }
@@ -1278,6 +1283,10 @@ button:hover {
 }
 
 @media (min-width: 1024px){
+  .lg\:rounded-full{
+    border-radius: 9999px;
+  }
+
   .lg\:text-6xl{
     font-size: 3.75rem;
     line-height: 1;
