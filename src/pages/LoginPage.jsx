@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavbarMobile from "../components/NavbarMobile";
 
 const LoginPage = () => {
@@ -69,6 +69,11 @@ const LoginPage = () => {
         >
           Connect
         </button>
+        <p className="text-gray-400 text-center">Don’t have an account? 
+        <Link to="/signup">
+        <span className="text-emerald-600 underline font-medium text-center"> Sign up</span>
+        </Link>
+        </p>
         {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
       </form>
       <NavbarMobile />

@@ -1259,6 +1259,15 @@ button:hover {
   color: rgb(248 113 113 / var(--tw-text-opacity));
 }
 
+.text-gray-200{
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.underline{
+  text-decoration-line: underline;
+}
+
 .shadow-\[rgba\(30\2c 30\2c 15\2c 0\.5\)_0px_4px_14px_0px\]{
   --tw-shadow: rgba(30,30,15,0.5) 0px 4px 14px 0px;
   --tw-shadow-colored: 0px 4px 14px 0px var(--tw-shadow-color);
