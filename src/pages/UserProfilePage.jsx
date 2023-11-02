@@ -195,7 +195,7 @@ const UserProfilePage = () => {
           className='p-2 w-full border rounded-lg'
         />
         <button className='bg-emerald-600 text-white p-2 rounded-full self-center mt-4 w-2/5' onClick={handleUpdateUser} name={"Submit"}>Submit</button>
-        <button  className=' text-white bg-red-400 p-2 rounded-full self-center mt-4 w-2/5' name={"Log Out"} onClick={handleGoBack}>Cancel</button>
+        <button  className=' text-white bg-red-400 p-2 rounded-full self-center mt-4 w-2/5' name={"Log Out"} onClick={handleLogOutClick}>Log Out</button>
       </div>
 
       <NavbarMobile />

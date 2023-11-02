@@ -938,6 +938,10 @@ button:hover {
   width: 1rem;
 }
 
+.w-4\/5{
+  width: 80%;
+}
+
 .max-w-2xl{
   max-width: 42rem;
 }
@@ -1092,6 +1096,14 @@ button:hover {
   padding: 2rem;
 }
 
+.p-1{
+  padding: 0.25rem;
+}
+
+.p-4{
+  padding: 1rem;
+}
+
 .px-2{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1127,6 +1139,10 @@ button:hover {
 
 .pl-8{
   padding-left: 2rem;
+}
+
+.pb-1{
+  padding-bottom: 0.25rem;
 }
 
 .text-left{

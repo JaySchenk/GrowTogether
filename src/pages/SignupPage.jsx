@@ -1,6 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { useNavigate } from "react-router-dom";
+import BackButton from "../components/BackButton";
+import NavbarMobile from "../components/NavbarMobile";
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
@@ -52,6 +54,7 @@ const SignupPage = () => {
 
   return (
     <div className="m-auto max-w-md flex flex-col justify-center h-[calc(100vh-100px)]">
+      <BackButton/> 
       <h1 className="text-xl font-bold text-center">Signup</h1>
       <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
         <input
@@ -160,6 +163,7 @@ const SignupPage = () => {
           Register
         </button>
       </form>
+      <NavbarMobile />
     </div>
   );
 };
