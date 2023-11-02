@@ -95,7 +95,10 @@ button:focus-visible {
 background-color: #d1d5db;
 }
 
-
+button:hover {
+  -webkit-filter: brightness(90%);
+  transition: all 0.2s ease;
+}
 
 
 

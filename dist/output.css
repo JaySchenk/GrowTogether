@@ -628,6 +628,11 @@ button:focus-visible {
   background-color: #d1d5db;
 }
 
+button:hover {
+  -webkit-filter: brightness(90%);
+  transition: all 0.2s ease;
+}
+
 .sr-only{
   position: absolute;
   width: 1px;
@@ -918,9 +923,24 @@ button:focus-visible {
   background-color: rgb(5 150 105 / var(--tw-bg-opacity));
 }
 
+.bg-sky-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+}
+
+.bg-sky-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(12 74 110 / var(--tw-bg-opacity));
+}
+
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.object-contain{
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .object-cover{
@@ -1134,6 +1154,16 @@ button:focus-visible {
   background-color: rgb(6 95 70 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-sky-700:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 105 161 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-sky-950:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(8 47 73 / var(--tw-bg-opacity));
+}
+
 .hover\:text-indigo-500:hover{
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
@@ -1149,6 +1179,10 @@ button:focus-visible {
 }
 
 @media (min-width: 640px){
+  .sm\:-mt-20{
+    margin-top: -5rem;
+  }
+
   .sm\:ml-4{
     margin-left: 1rem;
   }
@@ -1163,10 +1197,6 @@ button:focus-visible {
 
   .sm\:mt-20{
     margin-top: 5rem;
-  }
-
-  .sm\:-mt-20{
-    margin-top: -5rem;
   }
 
   .sm\:hidden{
@@ -1202,14 +1232,6 @@ button:focus-visible {
 
   .md\:ml-28{
     margin-left: 7rem;
-  }
-
-  .md\:-mt-10{
-    margin-top: -2.5rem;
-  }
-
-  .md\:-mt-20{
-    margin-top: -5rem;
   }
 
   .md\:w-1\/2{

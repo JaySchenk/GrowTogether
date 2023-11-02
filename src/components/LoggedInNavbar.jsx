@@ -16,15 +16,12 @@ const LoggedInNavbar = () => {
 
   return (
     <div className='flex'>
-      <Button name={"Log Out"} onClick={handleClick}></Button>
+      <button className='hover:bg-sky-950 bg-sky-900 text-white text-sm py-2 px-3 rounded-full m-2' onClick={handleClick}>Log Out</button>
       <Link to='/uplant'>
         <Button name={"User Plants"}></Button>
       </Link>
       <Link to='/uprofile'>
         <Button name={"User Profile"}></Button>
-      </Link>
-      <Link to='/createplant'>
-        <Button name={"Create Plant"}></Button>
       </Link>
       <Link to='/plantcare' className=' hover:underline'>
         <Button name={"Plant Care Library"}></Button>

@@ -6,10 +6,10 @@ const LoggedOutNavbar = () => {
   return (
     <div className='flex'>
       <Link to='/signup' className='hover:underline'>
-        <Button name={"Signup"}></Button>
+      <button className='hover:bg-sky-950 bg-sky-900 text-white text-sm py-2 px-3 rounded-full m-2'>Sign up</button>
       </Link>
       <Link to='/login' className='hover:underline'>
-        <Button name={"Login"}></Button>
+      <button className='hover:bg-sky-700 bg-sky-600 text-white text-sm py-2 px-3 rounded-full m-2'>Log in</button>
       </Link>
       <Link to='/plantcare' className=' hover:underline '>
         <Button name={"Plant Care Library"}></Button>
