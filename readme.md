@@ -113,7 +113,7 @@ reminderSettings - boolean
 ```
 
 ## Services
-
+```
 - Auth Service
     -auth.login
     -auth.signup
@@ -133,7 +133,7 @@ reminderSettings - boolean
     -put     /userplantsUpdate/:userPlantId
     -delete  /userplants/:userId/:userPlantId
     -put     /userUpdate/:userId
-
+```
 ## Links
 
 ### Github
