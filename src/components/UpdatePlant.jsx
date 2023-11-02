@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 const UpdatePlant = ({ plantId }) => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const UpdatePlant = ({ plantId }) => {
 
   const handleGoBack = () => {
     navigate("/uplant");
+    return(<Loader/>)
   };
 
   const handleSubmit = async (event) => {
@@ -148,7 +150,7 @@ const UpdatePlant = ({ plantId }) => {
             </button>
         </form>
       ) : (
-        <p>Loading...</p>
+        <Loader/>
       )}
     </div>
   );

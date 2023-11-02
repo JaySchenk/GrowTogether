@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { useNavigate } from "react-router-dom";
 import BackButton from "./BackButton";
+import Loader from "./Loader";
 
 const NewUserPlant = ({ type, plantId }) => {
   const isPost = type === "newPlant";
@@ -169,176 +170,193 @@ const NewUserPlant = ({ type, plantId }) => {
 
   return (
     <div className="m-auto max-w-md flex flex-col justify-center mt-10">
-      <BackButton/> 
+      <BackButton />
       {plants.length > 0 && (isPost || isPut) ? (
         <>
-          <h1 className="text-xl font-bold text-center">
-            {isPost ? "New plant" : ""}
-          </h1>
-          <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit}>
-            {isPost && (
-              <>
-                <p className="-mb-1">
-                  Plant name <span className="text-red-500">*</span>
-                </p>
-                <input
-                  type="text"
-                  value={plantName}
-                  onChange={(event) => setPlantName(event.target.value)}
-                  required
-                  placeholder="Plant name"
-                  className="p-2 border rounded-lg"
-                />
-                <p className="-mb-1">
-                  Species <span className="text-red-500">*</span>
-                </p>
-                <select
-                  value={plantSpecies}
-                  onChange={(event) => setPlantSpecies(event.target.value)}
-                  className="p-2 border rounded-lg"
-                  required
-                >
-                  <option value="">Pick value</option>
-                  {plants.map((item) => (
-                    <option key={item._id} value={item._id}>
-                      {item.species}
-                    </option>
-                  ))}
-                </select>
-                <div
-                  className=" drag mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
-                  id="drop_zone"
-                  onDrop={(ev) => dropHandler(ev)}
-                  onDragOver={(ev) => dragOverHandler(ev)}
-                >
-                  <div className="text-center">
-                    {plantPicture ? (
-                      <div>
-                        <img
-                          className="mx-auto"
-                          alt="not found"
-                          width={"150px"}
-                          src={URL.createObjectURL(plantPicture)}
-                        />
-                        <button
-                          type="button"
-                          className="text-red-500 text-xs"
-                          onClick={() => setPlantPicture(null)}
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    ) : (
-                      <svg
-                        className="mx-auto h-12 w-12 text-gray-300"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    )}
-                    <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                      <label
-                        htmlFor="image"
-                        className="relative cursor-pointer rounded-md font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                      >
-                        <span className="text-emerald-600">Upload a file</span>
-
-                        <input
-                          className="sr-only"
-                          id="image"
-                          name="image"
-                          type="file"
-                          value=""
-                          onChange={(event) => {
-                            setPlantPicture(event.target.files[0]);
-                          }}
-                        />
-                      </label>
-                      <p className="pl-1">or drag and drop</p>
-                    </div>
-                    <p className="text-xs leading-5 text-gray-600">
-                      PNG, JPG, GIF up to 10MB
+          {isSubmitting ? (
+            <Loader />
+          ) : (
+            <>
+              <h1 className="text-xl font-bold text-center">
+                {isPost ? "New plant" : ""}
+              </h1>
+              <form
+                className="flex flex-col gap-4 mt-8"
+                onSubmit={handleSubmit}
+              >
+                {isPost && (
+                  <>
+                    <p className="-mb-1">
+                      Plant name <span className="text-red-500">*</span>
                     </p>
-                  </div>
-                </div>
-                <p className="-mb-1">Plant cuttings available</p>
-                <input
-                  type="number"
-                  value={plantCutting}
-                  onChange={(event) => setPlantCutting(event.target.value)}
-                  placeholder="Plant cuttings available"
-                  className="p-2 border rounded-lg"
-                />{" "}
-                <p className="-mb-1">Plant size</p>
-                <input
-                  type="text"
-                  value={plantSize}
-                  onChange={(event) => setPlantSize(event.target.value)}
-                  placeholder="Plant size"
-                  className="p-2 border rounded-lg"
-                />
-              </>
-            )}
-            {isPut && type === "newCare" && (
-              <>
-                <p className="text-lg font-semibold text-sky-900">Gave plant water on</p>
-                <input
-                  type="date"
-                  value={activityDate}
-                  onChange={(event) => setActivityDate(event.target.value)}
-                  required
-                  placeholder="Gave plant water on"
-                  className="p-2 border rounded-lg"
-                />
-              </>
-            )}
-            {isPut && type === "newProduct" && (
-              <>
-                Product's used on plant
-                <input
-                  type="text"
-                  value={product}
-                  onChange={(event) => setProduct(event.target.value)}
-                  placeholder="Product's used on plant"
-                  className="p-2 border rounded-lg"
-                />
-                Date of using products
-                <input
-                  type="date"
-                  value={productUsedDate}
-                  onChange={(event) => setProductUsedDate(event.target.value)}
-                  required
-                  placeholder="Date of using products"
-                  className="p-2 border rounded-lg"
-                />
-              </>
-            )}
-            <label className="flex items-center">
-              <input
-                type="checkbox"
-                defaultChecked
-                onChange={(event) => setReminderSettings(event.target.checked)}
-                className="mr-2"
-              />
-              I want to receive plant care reminders
-            </label>
-            <button
-              type="submit"
-              // onClick={plantName && plantSpecies ? handleGoBack : undefined}
-              className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4 mb-4 "
-            >
-              {isPost ? "Make Plant" : "Save Changes"}
-            </button>
-          </form>
+                    <input
+                      type="text"
+                      value={plantName}
+                      onChange={(event) => setPlantName(event.target.value)}
+                      required
+                      placeholder="Plant name"
+                      className="p-2 border rounded-lg"
+                    />
+                    <p className="-mb-1">
+                      Species <span className="text-red-500">*</span>
+                    </p>
+                    <select
+                      value={plantSpecies}
+                      onChange={(event) => setPlantSpecies(event.target.value)}
+                      className="p-2 border rounded-lg"
+                      required
+                    >
+                      <option value="">Pick value</option>
+                      {plants.map((item) => (
+                        <option key={item._id} value={item._id}>
+                          {item.species}
+                        </option>
+                      ))}
+                    </select>
+                    <div
+                      className=" drag mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                      id="drop_zone"
+                      onDrop={(ev) => dropHandler(ev)}
+                      onDragOver={(ev) => dragOverHandler(ev)}
+                    >
+                      <div className="text-center">
+                        {plantPicture ? (
+                          <div>
+                            <img
+                              className="mx-auto"
+                              alt="not found"
+                              width={"150px"}
+                              src={URL.createObjectURL(plantPicture)}
+                            />
+                            <button
+                              type="button"
+                              className="text-red-500 text-xs"
+                              onClick={() => setPlantPicture(null)}
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ) : (
+                          <svg
+                            className="mx-auto h-12 w-12 text-gray-300"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        )}
+                        <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                          <label
+                            htmlFor="image"
+                            className="relative cursor-pointer rounded-md font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                          >
+                            <span className="text-emerald-600">
+                              Upload a file
+                            </span>
+
+                            <input
+                              className="sr-only"
+                              id="image"
+                              name="image"
+                              type="file"
+                              value=""
+                              onChange={(event) => {
+                                setPlantPicture(event.target.files[0]);
+                              }}
+                            />
+                          </label>
+                          <p className="pl-1">or drag and drop</p>
+                        </div>
+                        <p className="text-xs leading-5 text-gray-600">
+                          PNG, JPG, GIF up to 10MB
+                        </p>
+                      </div>
+                    </div>
+                    <p className="-mb-1">Plant cuttings available</p>
+                    <input
+                      type="number"
+                      value={plantCutting}
+                      onChange={(event) => setPlantCutting(event.target.value)}
+                      placeholder="Plant cuttings available"
+                      className="p-2 border rounded-lg"
+                    />
+                    <p className="-mb-1">Plant size</p>
+                    <input
+                      type="text"
+                      value={plantSize}
+                      onChange={(event) => setPlantSize(event.target.value)}
+                      placeholder="Plant size"
+                      className="p-2 border rounded-lg"
+                    />{" "}
+                  </>
+                )}
+                {isPut && type === "newCare" && (
+                  <>
+                    <p className="text-lg font-semibold text-sky-900">
+                      Gave plant water on
+                    </p>
+                    <input
+                      type="date"
+                      value={activityDate}
+                      onChange={(event) => setActivityDate(event.target.value)}
+                      required
+                      placeholder="Gave plant water on"
+                      className="p-2 border rounded-lg"
+                    />
+                  </>
+                )}
+                {isPut && type === "newProduct" && (
+                  <>
+                    Product's used on plant
+                    <input
+                      type="text"
+                      value={product}
+                      onChange={(event) => setProduct(event.target.value)}
+                      placeholder="Product's used on plant"
+                      className="p-2 border rounded-lg"
+                    />
+                    Date of using products
+                    <input
+                      type="date"
+                      value={productUsedDate}
+                      onChange={(event) =>
+                        setProductUsedDate(event.target.value)
+                      }
+                      required
+                      placeholder="Date of using products"
+                      className="p-2 border rounded-lg"
+                    />
+                  </>
+                )}
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    defaultChecked
+                    onChange={(event) =>
+                      setReminderSettings(event.target.checked)
+                    }
+                    className="mr-2"
+                  />
+                  I want to receive plant care reminders
+                </label>
+                <button
+                  type="submit"
+                  // onClick={plantName && plantSpecies ? handleGoBack : undefined}
+                  className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4 mb-4 "
+                >
+                  {isPost ? "Make Plant" : "Save Changes"}
+                </button>
+              </form>
+            </>
+          )}
         </>
       ) : (
-        <p>{plants.length > 0 ? "Invalid form type" : "Loading..."}</p>
+        <p>{plants.length > 0 ? "Invalid form type" : <Loader />}</p>
       )}
     </div>
   );

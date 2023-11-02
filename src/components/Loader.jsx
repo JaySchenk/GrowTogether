@@ -1,7 +1,7 @@
 const Loader = () => {
   return (
     <div className="container">
-      <div className="epic-loader style1">
+      <div className="epic-loader style1 mb-40">
         <div className="leaf l1"></div>
         <div className="leaf l2"></div>
         <div className="leaf l3"></div>

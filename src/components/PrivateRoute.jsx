@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { Navigate } from "react-router-dom";
+import Loader from "./Loader";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useContext(SessionContext);
@@ -9,7 +10,7 @@ const PrivateRoute = ({ children }) => {
     return <Navigate to='/login' />;
   }
 
-  return isLoading ? <h1>Loading...</h1> : <>{children}</>;
+  return isLoading ? <Loader/> : <>{children}</>;
 };
 
 export default PrivateRoute;
