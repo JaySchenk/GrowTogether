@@ -25,10 +25,12 @@ User Profile:
 - / - Homepage
 - /signup - Signup form
 - /login - Login form
-- /plants - List of user's plants
-- /plants/add - Form to add a new plant
-- /plants/:id - Plant detail and care advice
-- /profile/me - User's profile and settings
+- /uplant - List of user's plants
+- /uprofile - User's profile and settings
+- /createplant - Form to add a new plant
+- /plantcare - Library of supported plants
+- /plantcare/:id - Plant species detail and general care advice
+- updateplant/:plantId - update a specific plant
 
 ## Pages
 
