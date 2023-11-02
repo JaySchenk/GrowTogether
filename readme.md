@@ -136,10 +136,10 @@ reminderSettings - boolean
 
 ## Links
 
-### Trello
-https://trello.com/b/ZpGTruMo/grow-together
-
 ### Github
 - Frontend  https://github.com/JaySchenk/GrowTogether
 - Backend   https://github.com/JaySchenk/GrowTogetherBackend
 - Deployed  https://vocal-elf-bdb61c.netlify.app
+
+### Trello
+(https://i.imgur.com/otbd0Al.png)
