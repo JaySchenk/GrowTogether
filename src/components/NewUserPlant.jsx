@@ -307,6 +307,7 @@ const NewUserPlant = ({ type, plantId }) => {
                       required
                       placeholder="Gave plant water on"
                       className="p-2 border rounded-lg"
+                      max={new Date().toISOString().split('T')[0]}
                     />
                   </>
                 )}
