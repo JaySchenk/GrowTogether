@@ -115,24 +115,24 @@ reminderSettings - boolean
 ## Services
 
 - Auth Service
-    auth.login
-    auth.signup
-    auth.verify
+    -auth.login
+    -auth.signup
+    -auth.verify
 - Api Service
-    get     /getUser/:userId
-    get     /plantcare
-    get     /plantcare/:plantCareId
-    post    /plantcare
-    put     /plantcare/:plantCareId
-    delete  /plantcare/:plantCareId
-    post    /userplants
-    get     /userplant/:userId
-    put     /userplants/:userPlantId
-    get     /plant/:plantId
-    put     /users/:UserId
-    put     /userplantsUpdate/:userPlantId
-    delete  /userplants/:userId/:userPlantId
-    put     /userUpdate/:userId
+    -get     /getUser/:userId
+    -get     /plantcare
+    -get     /plantcare/:plantCareId
+    -post    /plantcare
+    -put     /plantcare/:plantCareId
+    -delete  /plantcare/:plantCareId
+    -post    /userplants
+    -get     /userplant/:userId
+    -put     /userplants/:userPlantId
+    -get     /plant/:plantId
+    -put     /users/:UserId
+    -put     /userplantsUpdate/:userPlantId
+    -delete  /userplants/:userId/:userPlantId
+    -put     /userUpdate/:userId
 
 ## Links
 
