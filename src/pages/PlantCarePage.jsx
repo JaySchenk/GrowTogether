@@ -34,7 +34,7 @@ const PlantCarePage = ({ match }) => {
       {plant ? (
         <div className='mb-14'>
             <BackButton/> 
-          <div className='plant-overview items-stretch sm:items-end sm:-mt-20 duration-300 sm:px-4 pl-8'>
+          <div className='plant-overview shadow-xl border-lime-50 border items-stretch sm:items-end sm:-mt-20 duration-300 sm:px-4 pl-8'>
             <div className="w-3/5 md:w-1/3 md:ml-28">
               <p className='font-medium text-4xl lg:text-6xl md:text-5xl md:leading-tight text-sky-950 md:ml-14 duration-300'>
                 {plant.species}

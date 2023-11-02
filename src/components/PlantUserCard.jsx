@@ -94,7 +94,7 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
   };
 
   return (
-    <div className="plant-card w-11/12 lg:w-1/2 max-w-2xl duration-300">
+    <div className="plant-card w-11/12 shadow-lg border-lime-50 border lg:w-1/2 max-w-2xl duration-300">
       <div className="w-full">
         <div className="plant-info -ml-9 flex justify-between">
           {plant.plantPicture ? (
@@ -128,7 +128,7 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
               {plant.plantSize !== "" ? "Plant size: " + plant.plantSize : ""}
             </p>
             {needWater ? (
-              <p className="font-normal text-base text-red-600">
+              <p className="font-normal text-sm text-red-600">
                 {plant.plantName} needs water, thirsty for {daysDifference} days.
               </p>
             ) : (
@@ -144,7 +144,7 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
             </Link>
             <button
               onClick={handleDelete}
-              className="bg-white text-red-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-2 sm:ml-4"
+              className="text-white bg-red-400 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-2 sm:ml-4"
             >
               Delete
             </button>

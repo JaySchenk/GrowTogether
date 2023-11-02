@@ -40,7 +40,7 @@ const UserPlantPage = () => {
   return (
     <div className='flex flex-col items-center justify-center mb-10'>
       <Link to={`/createplant`}>
-        <button className='bg-emerald-600 text-white p-3 rounded-full self-center mt-10 mb-4'>
+        <button className='bg-emerald-600 text-white shadow-md border-lime-50 border p-3 rounded-full self-center mt-10 mb-4'>
           + Create
         </button>
       </Link>
