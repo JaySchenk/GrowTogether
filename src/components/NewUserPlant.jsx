@@ -168,7 +168,7 @@ const NewUserPlant = ({ type, plantId }) => {
   }, []);
 
   return (
-    <div className="m-auto max-w-md flex flex-col justify-center mt-20">
+    <div className="m-auto max-w-md flex flex-col justify-center mt-10">
       <BackButton/> 
       {plants.length > 0 && (isPost || isPut) ? (
         <>
@@ -287,7 +287,7 @@ const NewUserPlant = ({ type, plantId }) => {
             )}
             {isPut && type === "newCare" && (
               <>
-                Gave plant water on
+                <p className="text-lg font-semibold text-sky-900">Gave plant water on</p>
                 <input
                   type="date"
                   value={activityDate}
@@ -331,7 +331,7 @@ const NewUserPlant = ({ type, plantId }) => {
             <button
               type="submit"
               // onClick={plantName && plantSpecies ? handleGoBack : undefined}
-              className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4 "
+              className="bg-emerald-600 text-white p-3 rounded-full self-center mt-4 mb-4 "
             >
               {isPost ? "Make Plant" : "Save Changes"}
             </button>

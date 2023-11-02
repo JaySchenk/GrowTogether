@@ -94,81 +94,83 @@ const PlantUserCard = ({ plant, fetchPlants }) => {
   };
 
   return (
-    <div className="plant-card w-11/12 md:w-1/2 max-w-2xl duration-300">
-      <div className="plant-info -ml-9">
-        {plant.plantPicture ? (
-          <img
-            className="rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300"
-            src={plant.plantPicture}
-            alt={plant.plantSpecies}
-          />
-        ) : (
-          <img
-            className="rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300"
-            src="https://ih1.redbubble.net/image.949338818.5434/aps,504x498,large,transparent-pad,600x600,f8f8f8.jpg"
-            alt={plant.plantSpecies}
-          />
-        )}
-        <div className="text-left ml-4">
-          <p className="font-semibold text-lg capitalize text-sky-900">
-            {plant.plantName}
-          </p>
-          <p className="font-medium text-base text-gray-600">
-            {currentPlant?.species}
-          </p>
-          <p className="font-normal text-sm text-gray-600">
-            {" "}
-            {plant.plantCutting > 0
-              ? "Plant cuttings available: " + plant.plantCutting
-              : ""}
-          </p>
-          <p className="font-normal text-sm text-gray-600">
-            {" "}
-            {plant.plantSize !== "" ? "Plant size: " + plant.plantSize : ""}
-          </p>
-          {needWater ? (
-            <p className="font-normal text-base text-red-600">
-              {plant.plantName} needs water, thirsty for {daysDifference} days.
-            </p>
+    <div className="plant-card w-11/12 lg:w-1/2 max-w-2xl duration-300">
+      <div className="w-full">
+        <div className="plant-info -ml-9 flex justify-between">
+          {plant.plantPicture ? (
+            <img
+              className="rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300"
+              src={plant.plantPicture}
+              alt={plant.plantSpecies}
+            />
           ) : (
-            <p className="font-normal text-sm text-emerald-600">
-              {plant.plantName} doesn't need water, water in {daysUntilWater}{" "}
-              days.
-            </p>
+            <img
+              className="rounded-full sm:rounded-2xl h-32 w-32 object-cover duration-300"
+              src="https://ih1.redbubble.net/image.949338818.5434/aps,504x498,large,transparent-pad,600x600,f8f8f8.jpg"
+              alt={plant.plantSpecies}
+            />
           )}
-          <Link to={`/updateplant/${plant._id}`}>
-            <button className="bg-emerald-600 text-white p-2 sm:p-3 px-3 sm:px-5 rounded-full self-center mt-2 sm:mt-2">
-              Edit
+          <div className="text-left ml-4">
+            <p className="font-semibold text-lg capitalize text-sky-900">
+              {plant.plantName}
+            </p>
+            <p className="font-medium text-base text-gray-600">
+              {currentPlant?.species}
+            </p>
+            <p className="font-normal text-sm text-gray-600">
+              {" "}
+              {plant.plantCutting > 0
+                ? "Plant cuttings available: " + plant.plantCutting
+                : ""}
+            </p>
+            <p className="font-normal text-sm text-gray-600">
+              {" "}
+              {plant.plantSize !== "" ? "Plant size: " + plant.plantSize : ""}
+            </p>
+            {needWater ? (
+              <p className="font-normal text-base text-red-600">
+                {plant.plantName} needs water, thirsty for {daysDifference} days.
+              </p>
+            ) : (
+              <p className="font-normal text-sm text-emerald-600">
+                {plant.plantName} doesn't need water, water in {daysUntilWater}{" "}
+                days.
+              </p>
+            )}
+            <Link to={`/updateplant/${plant._id}`}>
+              <button className="bg-emerald-600 text-white p-2 sm:p-3 px-3 sm:px-5 rounded-full self-center mt-2 sm:mt-2">
+                Edit
+              </button>
+            </Link>
+            <button
+              onClick={handleDelete}
+              className="bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-2 sm:ml-4"
+            >
+              Delete
             </button>
+            {showNewUserPlant ? (
+              <button
+                onClick={() => setShowNewUserPlant(false)}
+                className="bg-white text-red-600 p-2 sm:p-3 rounded-full self-center mt-2 md:mt-10 sm:ml-4"
+              >
+                Cancel
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowNewUserPlant(true)}
+                className="bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-10 sm:ml-4"
+              >
+                Water plant
+              </button>
+            )}
+          </div>
+        <div className="plant-link chevron-double-right">
+          <Link to={`/plantcare/${plant.plantSpecies}`}>
+            {" "}
+            <ChevronDoubleRightIcon className="w-8 text-emerald-600" />{" "}
           </Link>
-          <button
-            onClick={handleDelete}
-            className="bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-2 ml-4 sm:ml-4"
-          >
-            Delete
-          </button>
-          {showNewUserPlant ? (
-            <button
-              onClick={() => setShowNewUserPlant(false)}
-              className="bg-white text-red-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-10 ml-4 sm:ml-4"
-            >
-              Cancel
-            </button>
-          ) : (
-            <button
-              onClick={() => setShowNewUserPlant(true)}
-              className="bg-white text-emerald-600 p-2 sm:p-3 rounded-full self-center mt-2 sm:mt-10 ml-4 sm:ml-4"
-            >
-              Water plant
-            </button>
-          )}
         </div>
-      </div>
-      <div className="plant-link chevron-double-right">
-        <Link to={`/plantcare/${plant.plantSpecies}`}>
-          {" "}
-          <ChevronDoubleRightIcon className="w-8 text-emerald-600" />{" "}
-        </Link>
+        </div>
       </div>
       {showNewUserPlant && <NewUserPlant type="newCare" plantId={plant._id} />}
     </div>
