@@ -4,6 +4,7 @@ import PlantUserCard from "../components/PlantUserCard";
 import { SessionContext } from "../contexts/SessionContext";
 import { Link, useNavigate } from "react-router-dom";
 import NoPlant from "/no_plants.jpg";
+import Loader from "../components/Loader";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -44,7 +45,7 @@ const UserPlantPage = () => {
         </button>
       </Link>
       {loading ? (
-        <p>Loading...</p>
+        <Loader/>
       ) : plants.length ? (
         plants.map((plant, index) => (
           <PlantUserCard key={index} plant={plant} fetchPlants={fetchPlants} />

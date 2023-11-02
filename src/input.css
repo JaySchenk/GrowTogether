@@ -11,26 +11,6 @@ html {
   font-family: 'Poppins', sans-serif!;
 }
 
-/* button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  color: white;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
-
 .navbar-mobile {
   position: fixed;
   bottom: 0;
@@ -81,7 +61,6 @@ button:focus-visible {
   padding-top: 100px;
   padding: 100px 0px 0;
   border-radius: 0 0 0 80px;
-  /* align-items: flex-end; */
 }
 
 .img-no-plant{
@@ -97,7 +76,79 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+/* loader */
 
+:root {
+  --size-unit: 1.5em;
+  --gap: 0.1em;
+  --leaf-rad: 1em;
+}
+
+.epic-loader {
+  position: relative;
+  width: calc(var(--size-unit) * 2 + var(--gap));
+  height: calc(var(--size-unit) * 2 + var(--gap));
+  left: calc(50% - 1.1em);
+  animation: fa-spin 3s ease-in-out infinite;
+}
+
+.epic-loader .leaf {
+  width: var(--size-unit);
+  height: var(--size-unit);
+  position: absolute;
+  background-color: #0D986A;
+  animation: fa-spin 3s ease-in-out infinite;
+}
+
+.epic-loader .leaf.l1 {
+  left: 0;
+  border-bottom-left-radius: var(--leaf-rad);
+  filter: brightness(90%);
+  border-top-right-radius: var(--leaf-rad);
+}
+
+.epic-loader .leaf.l2 {
+  margin-left: var(--gap);
+  left: var(--size-unit);
+  filter: brightness(100%);
+  border-bottom-right-radius: var(--leaf-rad);
+  border-top-left-radius: var(--leaf-rad);
+}
+
+.epic-loader .leaf.l3 {
+  top: var(--size-unit);
+  margin-top: var(--gap);
+  filter: brightness(110%);
+  border-top-left-radius: var(--leaf-rad);
+  border-bottom-right-radius: var(--leaf-rad);
+}
+
+.epic-loader .leaf.l4 {
+  top: var(--size-unit);
+  left: var(--size-unit);
+  margin-left: var(--gap);
+  margin-top: var(--gap);
+  filter: brightness(120%);
+  border-bottom-left-radius: var(--leaf-rad);
+  border-top-right-radius: var(--leaf-rad);
+}
+
+.container{
+  height: 100vh;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  align-content: center;
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 
 @tailwind utilities;

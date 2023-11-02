@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import NavbarMobile from "../components/NavbarMobile";
 import PlantCard from "../components/PlantCard";
+import Loader from "../components/Loader";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -24,9 +25,9 @@ const PlantLibrary = () => {
 
   return (
     <div className='plant-library mb-10'>
-      {plants.map((plant, index) => (
+      {plants?(plants.map((plant, index) => (
         <PlantCard key={index} plant={plant} />
-      ))}
+      ))):<Loader/>}
       <NavbarMobile />
     </div>
   );

@@ -6,6 +6,7 @@ import Light from "/light.png";
 import Soil from '/soil.png';
 import Temp from "/temp.png";
 import Water from "/water.png"
+import Loader from "../components/Loader";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -91,7 +92,7 @@ const PlantCarePage = ({ match }) => {
           </div>
         </div>
       ) : (
-        <p>Loading...</p>
+        <Loader/>
       )}
       <NavbarMobile />
     </>
