@@ -1,22 +1,40 @@
 import React from "react";
 import NavbarMobile from "../components/NavbarMobile";
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
     <>
-      <div className=' flex items-center justify-center w-full sm:h-screen '>
-        <div className='text-xl font-bold text-center w-2/3 justify-middle mb-14 mt-4'>
-          Welcome to GrowTogether, your digital gardening companion that ensures
-          your plants thrive and bloom to their fullest potential. Whether
-          you're a seasoned botanist or just stepping into the world of
-          greenery, our app offers tailored advice, catering to each unique
-          plant in your collection. Gone are the days of wilted leaves and
-          forgotten watering schedules. With GrowTogether, you'll receive timely
-          reminders, ensuring your plants receive the right amount of water,
-          sunlight, and care they deserve. Dive deep into our comprehensive
-          plant care library, and watch as you and your plants grow together,
-          fostering an environment of beauty and tranquility right at your
-          fingertips. Join us, and let's cultivate a greener tomorrow, today.
+      <div className='leading-normal tracking-normal text-white gradient'>
+        <div className='pt-24'>
+          <div className='container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center'>
+            <div className='flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left md:self-center'>
+              <p className='uppercase tracking-loose w-full'>
+                Welcome to GrowTogether!
+              </p>
+              <h1 className='my-4 text-5xl font-bold leading-tight'>
+                Your digital gardening companion
+              </h1>
+              <p className='leading-normal text-2xl mb-8'>
+                that ensures your plants thrive and bloom to their fullest
+                potential. Whether you're a seasoned botanist or just stepping
+                into the world of greenery, our app offers tailored advice,
+                catering to each unique plant in your collection.
+              </p>
+              <div className='flex'>
+                <Link to='/login'>
+                  <Button name={"Explore Now"}></Button>
+                </Link>
+                <Link to='/plantcare'>
+                  <Button name={"Learn More"}></Button>
+                </Link>
+              </div>
+            </div>
+            <div className='w-full md:w-3/5 py-6 text-center'>
+              <img className='w-full' src='https://i.imgur.com/JqwO3ge.png' />
+            </div>
+          </div>
         </div>
       </div>
       <NavbarMobile />
